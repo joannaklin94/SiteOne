@@ -20,7 +20,7 @@
                                 <legend>Topics corresponding to your specialisation: <br>
                                     <h3 style="color:cornflowerblue;">{{ $student->specialisation }} ({{ $student->degree }}) </h3></legend>
 
-                                @if ($topics)
+                                @if ($found)
                                     <div id="topics">
                                         <input class="search" placeholder="Search" />
                                         <button class="sort" data-sort="title">
@@ -31,6 +31,11 @@
                                         </button>
 
                                         <br> <br>
+                                        {{--@if ($errors->has('id_thesis'))--}}
+                                            {{--<span class="help-block">--}}
+                                                        {{--<strong>Chose one topic.</strong>--}}
+                                                    {{--</span>--}}
+                                        {{--@endif--}}
 
                                         <table width="100%" class="table table-striped">
                                             <thead>
@@ -53,11 +58,6 @@
                                                 </tr>
                                                 @endif
                                             @endforeach
-                                                @if ($errors->has('id_thesis'))
-                                                    <span class="help-block">
-                                                        <strong>{{ $errors->first('id_thesis') }}</strong>
-                                                    </span>
-                                                @endif
                                             </tbody>
                                         </table>
                                         <ul class="pagination pagination-sm"></ul>
@@ -80,7 +80,6 @@
                                     });
 
                                 </script>
-
 
 
 

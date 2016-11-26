@@ -23,7 +23,7 @@ class CreateProfessorsTable extends Migration
             $table->timestamps();
 
             $table->unique(['id','telephone']);
-            $table->foreign('id')->references('id')->on('users');
+            $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

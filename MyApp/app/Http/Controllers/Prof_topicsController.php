@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+
 use App\Student;
 use App\Professor;
 use App\User;
@@ -30,10 +31,10 @@ class Prof_topicsController extends Controller
      */
     public function index()
     {
-
         $user = Auth::user();
         $topics = DB::table('theses')
             ->where('id_prof', $user->id)
+            ->latest()
             ->get();
 
         return view('prof.prof_topics', compact('topics', 'user'));
@@ -47,21 +48,15 @@ class Prof_topicsController extends Controller
 
     public function store(Request $request)
     {
-        $id_user = Auth::user()->id;
-
+        $user = Auth::user();
         $input = $request->all();
+        $this->validator($input)->validate();
+        $input['id_prof'] = $user->id;
 
         $specialisations_string = implode(';', $input['specialisations']);
         $input['specialisations']=$specialisations_string;
 
-        $this->validator($input)->validate();
-        $input['id_prof'] = $id_user;
-
-
         Thesis::create($input);
-
-
-//        $request->session()->flash('message', 'You successfully added new topic!!');
 
         return redirect("prof_topics");
     }
@@ -69,26 +64,23 @@ class Prof_topicsController extends Controller
 
     public function restore($id, Request $request)
     {
-        $id_user = Auth::user()->id;
-
+        $user = Auth::user();
         $input = $request->all();
+        $this->validator($input)->validate();
+        $input['id_prof'] = $user->id;
 
         $specialisations_string = implode(';', $input['specialisations']);
         $input['specialisations']=$specialisations_string;
 
-        $this->validator($input)->validate();
-        $input['id_prof'] = $id_user;
+
 
         $topic = Thesis::find($id);
 
-            $topic->title = $input['title'];
-            $topic->description = $input['description'];
-            $topic->degree = $input['degree'];
-            $topic->specialisations = $input['specialisations'];
-            $topic->save();
-
-
-//        $request->session()->flash('message', 'You successfully added new topic!!');
+        $topic->title = $input['title'];
+        $topic->description = $input['description'];
+        $topic->degree = $input['degree'];
+        $topic->specialisations = $input['specialisations'];
+        $topic->save();
 
         return redirect("prof_topics");
     }
@@ -103,17 +95,21 @@ class Prof_topicsController extends Controller
 
     public function delete($id)
     {
+        $thesis = DB::table('theses')->where('id', '=', $id)->first();
 
-        DB::table('theses')->where('id', '=', $id)->delete();
+        if($thesis->is_chosen == 'not_chosen')
+        {
+            DB::table('theses')->where('id', '=', $id)->delete();
+
+        }
+
 
         return redirect("prof_topics");
     }
 
     public function show($id)
     {
-
         $topic = Thesis::findOrFail($id);
-
         $specialisations_array = explode( ';', $topic->specialisations );
 
         return view('prof.topic', compact('topic', 'specialisations_array'));

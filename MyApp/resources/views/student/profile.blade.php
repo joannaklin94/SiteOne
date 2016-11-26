@@ -1,21 +1,17 @@
 @extends('layouts.student')
 
-
-
 @section('content')
-
-
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div style="float:right; margin-top: 5%;">
-                            <img src="/uploads/{{$user->avatar}}" class="img-thumbnail" style="width:150px; height:150px;" ><br>
+                        <div style="float:right; margin-right: 15%; margin-top: 10%;">
+                            <img src="/uploads/{{Auth::user()->avatar}}" class="img-thumbnail" style="width:150px; height:150px;" ><br>
                             <form enctype="multipart/form-data" action="profile2a" method="POST">
-                                <label>Update profile image</label>
-                                <input type="file" accept='image/*' name="avatar"><br>
-{{--                                <input type="hidden" name="_token" value="{{ scrf_token() }}">--}}
+                                <label class="btn btn-default btn-file btn-sm">Update profile image
+                                    <input type="file" accept='image/*'   style="display:none;" name="avatar"><br>
+                                </label><br><br>
                                 <input type="submit" class="pull-left btn btn-sm btn-primary" value="Update">
                                 {{ csrf_field() }}
                             </form>
@@ -35,12 +31,9 @@
                     </div>
 
                     <div class="panel-body">
-
-                      <h3 style="color:cornflowerblue;">Overview</h3> <br>
-
-                    @if( $student )
-
-                            <div class=" col-md-9 col-lg-9 ">
+                        <div class=" col-md-9 col-lg-9 ">
+                        @if( $student )
+                            <h3 style="color:cornflowerblue;">Overview</h3> <br>
                                 <table class="table table-user-information">
                                     <tbody>
                                     <tr>
@@ -55,19 +48,30 @@
                                         <td>Degree</td>
                                         <td>{{ $student->degree }}</td>
                                     </tr>
-
-                                    <tr>
                                     <tr>
                                         <td>Telephone</td>
-                                        <td>{{ $student->tel }} </td>
+                                        <td>{{ $student->telephone }} </td>
                                     </tr>
                                     </tbody>
                                 </table>
-
                         @endif
 
-                          </div>
-                      </div>
+                        @if( $topic )
+                        <h3 style="color:cornflowerblue;">Thesis</h3> <br>
+                                <table class="table table-user-information" width="100%">
+                                    <tbody>
+                                    <tr>
+                                        <td>title</td>
+                                        <td><a href="{{ action('Student_topicController@show_topic', [ $topic->id] ) }}">{{ $topic->title }}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Supervisor</td>
+                                        <td><a href="{{ action('Student_topicController@show_prof', [ $topic->id_prof] ) }}">{{ $topic->name}} {{ $topic->surname}}</a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                         @endif
+                        </div>
                   </div>
               </div>
           </div>

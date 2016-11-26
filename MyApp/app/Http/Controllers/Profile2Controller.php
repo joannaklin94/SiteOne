@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 
 use App\Student;
+use App\Studentstopic;
 use App\Thesis;
+use App\Professor;
 use App\User;
 use Image;
 use Carbon\Carbon;
@@ -20,8 +22,6 @@ use Illuminate\Session\Store;
 
 class Profile2Controller extends Controller
 {
-
-
     /**
      * Show the application dashboard.
      *
@@ -29,61 +29,49 @@ class Profile2Controller extends Controller
      */
     public function index()
     {
-
         $user = Auth::user();
-//        $id = Auth::user()->id;
-        $student = DB::table('students')
-            ->where('id', $user->id)
+        $student = Student::where('id', $user->id)
+            ->first();
+        $topic = Studentstopic::where('id_student', $user->id)
             ->first();
 
-//        $student = DB::table('students')
-//            ->whereExists(function ($query) {
-//                $id = Auth::user()->id;
-//                $query
-//                    ->from('students')
-//                    ->where('student_id', $id)->first();
-//            })
-//            ->get();
+        if ($topic)
+        {
+            $topic = Thesis::where('id', $topic->id_thesis)
+                ->first();
+            $user = User::where('id', $topic->id_prof)
+                ->first();
+            $topic['name'] = $user->name;
+            $topic['surname'] = $user->surname;
+        }
 
-
-        return view('student.profile', compact('student','user'));
+        return view('student.profile', compact('student', 'topic'));
     }
 
     public function edit()
     {
         $user = Auth::user();
+        $old_data = Student::where('id', $user->id)
+            ->first();
 
-//        $topics = Thesis::get()
-
-        return view('student.edit_profile', compact('user'));
+        return view('student.edit_profile', compact('user', 'old_data'));
     }
 
 
 
     public function store(Request $request)
     {
-
-        $id = Auth::user()->id;
-
+        $user = Auth::user();
         $input = $request->all();
         $this->validator($input)->validate();
-        $input['id'] = $id;
-        $input['status'] = 1;
 
-        $student = Student::find($id);
-
-
-        if ( $student != null ) {
-            $student->student_number = $input['student_number'];
-            $student->specialisation = $input['specialisation'];
-            $student->degree = $input['degree'];
-            $student->tel = $input['tel'];
-            $student->save();
-        }
-
-        else {
-            Student::create($input);
-    }
+        Student::updateOrCreate(
+            ['id' => $user->id],
+            [   'student_number' => $input['student_number'],
+                'specialisation' => $input['specialisation'],
+                'degree' => $input['degree'],
+                'telephone' => $input['telephone']
+            ]);
 
         return redirect("profile2");
     }
@@ -104,13 +92,11 @@ class Profile2Controller extends Controller
         return redirect("profile2");
     }
 
-
-
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'student_number' => 'required|numeric',
-            'tel' =>  'required|numeric',
+            'telephone' =>  'required|numeric',
         ]);
     }
 

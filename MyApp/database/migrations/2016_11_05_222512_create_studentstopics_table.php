@@ -21,7 +21,8 @@ class CreateStudentstopicsTable extends Migration
             $table->unique(['id_student', 'id_thesis']);
 
 //            $table->foreign('id_thesis')->references('id')->on('theses');
-            $table->foreign('id_student')->references('id')->on('users');
+            $table->foreign('id_student')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_thesis')->references('id')->on('theses')->onDelete('cascade');
 
         });
     }

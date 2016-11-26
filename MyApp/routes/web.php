@@ -27,6 +27,8 @@ Route::get('/info', function () {
 Route::get('/topics', function () {
     return view('before_auth.topics'); });
 
+Route::get('/topic/{id}', 'TopicsController@show');
+
 Route::get('/topics','TopicsController@index');
 
 
@@ -51,6 +53,8 @@ Route::group(['middleware' => 'prof', 'auth'], function () {
         return view('/prof.home'); });
 
     Route::get('/prof_students','ProfstudentsController@index');
+    Route::get('/prof_students/workspace/{id}','ProfstudentsController@show_workspace');
+    Route::get('/prof_students/student/{id}','ProfstudentsController@show_student');
 
     Route::get('/prof_topics','Prof_topicsController@index');
     Route::get('/prof_topics/create','Prof_topicsController@create');
@@ -77,8 +81,7 @@ Route::group(['middleware' => 'prof', 'auth'], function () {
 /*After logging - user: student*/
 Route::group(['middleware' => 'student', 'auth'], function () {
 
-    Route::get('/home2', function () {
-        return view('/student.home'); });
+    Route::get('/home2','Home2Controller@index');
 
     Route::get('/workspace2', function () {
         return view('/student.workspace'); });
@@ -90,7 +93,8 @@ Route::group(['middleware' => 'student', 'auth'], function () {
 
     Route::get('/profile2/topic','Student_topicController@edit');
     Route::post('/profile2/topic1','Student_topicController@store');
-    Route::get('/student_topic/{id}','Student_topicController@show');
+    Route::get('/student_topic/{id}','Student_topicController@show_topic');
+    Route::get('/student_professor/{id}','Student_topicController@show_prof');
 
 });
 

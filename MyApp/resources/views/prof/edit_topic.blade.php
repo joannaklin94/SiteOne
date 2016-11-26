@@ -36,32 +36,33 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="specialisations" class="col-md-4 control-label">Suitable for specialisations</label>
-                                    <div class="col-md-6">
-                                        <select id="specialisations" class="form-control" name="specialisations[]" multiple>
-                                            <option value="Automatyka i Robotyka">Automatyka i Robotyka</option>
-                                            <option value="Mechatronika">Mechatronika</option>
-                                            <option value="Systemy Sterowania Inteligentnymi Budynkami">Systemy Sterowania Inteligentnymi Budynkami</option>
-                                            <option value="Transport">Transport</option>
-                                            <option value="Elektronika i Telekomunikacja">Elektronika i Telekomunikacja</option>
-                                            <option value="Telecommunication and Computer Science (IFE)">Telecommunication and Computer Science (IFE)</option>
-                                            <option value="Elektrotechnika">Elektrotechnika</option>
-                                            <option value="Informatyka">Informatyka</option>
-                                            <option value="Computer Science (IFE)">Computer Science (IFE)</option>
-                                            <option value="Inżynieria Biomedyczna">Inżynieria Biomedyczna</option>
-                                        </select>
+                                        <label for="specialisations" class="col-md-4 control-label">Suitable for specialisations</label>
+                                    <div class="form-group{{ $errors->has('specialisations') ? ' has-error' : '' }}">
+                                            <div class="col-md-6">
+                                            <select id="specialisations" class="form-control" name="specialisations[]" multiple>
+                                                <option value="Automatyka i Robotyka">Automatyka i Robotyka</option>
+                                                <option value="Mechatronika">Mechatronika</option>
+                                                <option value="Systemy Sterowania Inteligentnymi Budynkami">Systemy Sterowania Inteligentnymi Budynkami</option>
+                                                <option value="Transport">Transport</option>
+                                                <option value="Elektronika i Telekomunikacja">Elektronika i Telekomunikacja</option>
+                                                <option value="Telecommunication and Computer Science (IFE)">Telecommunication and Computer Science (IFE)</option>
+                                                <option value="Elektrotechnika">Elektrotechnika</option>
+                                                <option value="Informatyka">Informatyka</option>
+                                                <option value="Computer Science (IFE)">Computer Science (IFE)</option>
+                                                <option value="Inżynieria Biomedyczna">Inżynieria Biomedyczna</option>
+                                            </select>
+                                            @if ($errors->has('specialisations'))
+                                                <span class="help-block">
+                                             <strong>{{ $errors->first('specialisations') }}</strong>
+                                        </span>
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
+
                                     <label for="description" class="col-md-4 control-label">Description </label>
                                     <div class="col-md-6">
                                         <textarea rows="5" cols="50" class="form-control" id="description" name="description" value="{{ old('description') ?: $topic->description}}">Specify the topic...</textarea>
-                                        @if ($errors->has('description'))
-                                            <span class="help-block">
-                                             <strong>{{ $errors->first('description') }}</strong>
-                                        </span>
-                                        @endif
                                     </div>
                                 </div>
                             </fieldset>

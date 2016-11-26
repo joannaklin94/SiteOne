@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'WEIIA') }}</title>
 
 
     <!-- Styles -->
@@ -41,7 +41,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'WEEIA') }}
                 </a>
             </div>
 
@@ -109,7 +109,7 @@
                                         My students
                                     </a>
 
-                                    <form id="workspace" action="{{ url('/prof_students') }}" method="GET" style="display: none;">
+                                    <form id="mystudents" action="{{ url('/prof_students') }}" method="GET" style="display: none;">
                                     </form>
                                 </li>
 

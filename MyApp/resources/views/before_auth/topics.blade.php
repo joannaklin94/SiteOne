@@ -42,7 +42,8 @@
                                     <tbody class="list">
                                     @foreach( $topics as $topic )
                                     <tr>
-                                        <td class="title">{{$topic->title}} </td>
+                                        <td class="title"><a href="{{ action('TopicsController@show', [ $topic->id] ) }}" >
+                                            {{$topic->title}} </a></td>
                                         <td class="id_prof">{{$topic->name}} {{$topic->surname}}</td>
                                         <td class="degree">{{$topic->degree}} </td>
                                     </tr>

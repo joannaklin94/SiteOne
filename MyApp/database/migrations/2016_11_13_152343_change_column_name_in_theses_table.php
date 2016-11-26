@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddStatusToThesesTable extends Migration
+class ChangeColumnNameInThesesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddStatusToThesesTable extends Migration
      */
     public function up()
     {
-        Schema::table('theses', function ($table) {
-            $table->string('status')->default('not_chosen');
-        });
+//        Schema::table('theses', function ($table) {
+//            $table->renameColumn('status', 'is_chosen');
+//        });
     }
 
     /**
@@ -25,8 +25,6 @@ class AddStatusToThesesTable extends Migration
      */
     public function down()
     {
-        Schema::table('theses', function ($table) {
-            $table->dropColumn('status');
-        });
+        //
     }
 }

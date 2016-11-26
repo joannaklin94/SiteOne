@@ -51,19 +51,6 @@
                                     </select>
                                 </div>
                             </div>
-
-                                <!--
-                            <div class="form-group">
-                                <label for="degree" class="col-md-4 control-label">Academic year</label>
-                                <div class="col-md-6">
-                                    <select id="year" class="form-control" name="year">
-                                        <option value="master">2015-2016</option>
-                                        <option value="engineer">2016-2017</option>
-                                        <option value="engineer">2017-2018</option>
-                                    </select>
-                                </div>
-                            </div>
-                            -->
                     </fieldset>
 
 
@@ -71,23 +58,19 @@
                             <fieldset>
                                 <legend>Contact</legend>
 
-                            <div class="form-group{{ $errors->has('tel') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('telephone') ? ' has-error' : '' }}">
                                 <label for="telephone" class="col-md-4 control-label">Telephone</label>
                                 <div class="col-md-6">
-                                    <input id="tel" type="tel" class="form-control" name="tel" value="{{ old('tel') }}"autofocus>
-                                    @if ($errors->has('tel'))
+                                    <input id="tel" type="tel" class="form-control" name="telephone" value="{{ old('telephone')  }}"autofocus>
+                                    @if ($errors->has('telephone'))
                                         <span class="help-block">
-                                             <strong>{{ $errors->first('tel') }}</strong>
+                                             <strong>{{ $errors->first('telephone') }}</strong>
                                         </span>
                                     @endif
                                 </div>
                             </div>
                             </fieldset>
 
-                            <fieldset>
-                                <legend>Thesis</legend>
-                                lista tematow z juz wydzielonym levelem do wyboru jeden <br><br>
-                            </fieldset>
 
 
                             <div class="form-group">

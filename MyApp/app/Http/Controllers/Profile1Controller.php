@@ -20,8 +20,6 @@ use Illuminate\Session\Store;
 
 class Profile1Controller extends Controller
 {
-
-
     /**
      * Show the application dashboard.
      *
@@ -29,7 +27,6 @@ class Profile1Controller extends Controller
      */
     public function index()
     {
-
         $user = Auth::user();
         $prof = DB::table('professors')
             ->where('id', $user->id)
@@ -42,34 +39,26 @@ class Profile1Controller extends Controller
     {
         $user = Auth::user();
         $old_profile = Professor::find($user->id);
+
         return view('prof.edit_profile', compact('user', 'old_profile'));
     }
-
-
 
     public function store(Request $request)
     {
 
-        $id = Auth::user()->id;
+        $user = Auth::user();
 
         $input = $request->all();
         $this->validator($input)->validate();
-        $input['id'] = $id;
+        $input['id'] = $user->id;
 
-        $prof = Professor::find($id);
-
-
-        if ( $prof != null ) {
-            $prof->room = $input['room'];
-            $prof->visit_hours = $input['visit_hours'];
-            $prof->telephone = $input['telephone'];
-            $prof->institute = $input['institute'];
-            $prof->save();
-        }
-
-        else {
-            Professor::create($input);
-        }
+        Professor::updateOrCreate(
+            ['id' => $user->id],
+            [   'room' => $input['room'],
+                'visit_hours' => $input['visit_hours'],
+                'institute' => $input['institute'],
+                'telephone' => $input['telephone']
+            ]);
 
         return redirect("profile1");
     }
@@ -89,7 +78,6 @@ class Profile1Controller extends Controller
 
         return redirect("profile1");
     }
-
 
     protected function validator(array $data)
     {

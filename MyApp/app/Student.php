@@ -8,7 +8,7 @@ class Student extends Model
 {
 
     protected $fillable = [
-        'specialisation', 'student_number', 'degree', 'status', 'tel',
+        'id', 'specialisation', 'student_number', 'degree', 'status', 'telephone',
     ];
 
     public function user (){
@@ -16,8 +16,15 @@ class Student extends Model
         return $this->belongsTo('App/User');
     }
 
+//    public function thesis()
+//    {
+//        return $this->hasOne('App\Thesis');
+//    }
 
 
 
+
+
+//    protected $incrementing = false; //chyba bo nie jest incrementing primary key
 
 }

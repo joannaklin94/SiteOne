@@ -18,17 +18,17 @@ class CreateStudentsTable extends Migration
             $table->integer('student_number');
             $table->string('specialisation');
             $table->string('degree');
-            $table->string('tel');
+            $table->string('telephone');
 //           $table->number('year');
-            $table->boolean('status');  //nie wiem czy zosatwics
+            $table->boolean('status')->default(1);  //nie wiem czy zosatwics
             //$table->rememberToken();
             $table->timestamps();
 
 
-           $table->unique(['id', 'student_number','tel']);
+           $table->unique(['id', 'student_number','telephone']);
 
 //           $table->primary('student_id');
-            $table->foreign('id')->references('id')->on('users');
+            $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

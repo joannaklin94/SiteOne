@@ -36,7 +36,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="specialisations" class="col-md-4 control-label">Suitable for specialisations</label>
+                                <label for="specialisations" class="col-md-4 control-label">Suitable for specialisations</label>
+                                <div class="form-group{{ $errors->has('specialisations') ? ' has-error' : '' }}">
                                     <div class="col-md-6">
                                         <select id="specialisations" class="form-control" name="specialisations[]" multiple>
                                             <option value="Automatyka i Robotyka">Automatyka i Robotyka</option>
@@ -50,6 +51,11 @@
                                             <option value="Computer Science (IFE)">Computer Science (IFE)</option>
                                             <option value="Inżynieria Biomedyczna">Inżynieria Biomedyczna</option>
                                         </select>
+                                        @if ($errors->has('specialisations'))
+                                            <span class="help-block">
+                                             <strong>{{ $errors->first('specialisations') }}</strong>
+                                        </span>
+                                        @endif
                                     </div>
                                 </div>
 

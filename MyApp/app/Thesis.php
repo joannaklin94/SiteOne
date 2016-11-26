@@ -10,8 +10,8 @@ class Thesis extends Model
         'id', 'id_prof', 'title', 'description', 'degree', 'specialisations',
     ];
 
-    public function professor (){
-
-        return $this->belongsTo('App/Professor');
-    }
+//    public function user (){
+//
+//        return $this->belongsTo('App\User','id','id_prof');
+//    }
 }

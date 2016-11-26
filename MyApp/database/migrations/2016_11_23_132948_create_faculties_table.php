@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddSpecialisationToThesesTable extends Migration
+class CreateFacultiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,7 @@ class AddSpecialisationToThesesTable extends Migration
      */
     public function up()
     {
-        Schema::table('theses', function ($table) {
-            $table->string('specialisations');
-        });
+        //
     }
 
     /**
@@ -25,8 +23,6 @@ class AddSpecialisationToThesesTable extends Migration
      */
     public function down()
     {
-        Schema::table('theses', function ($table) {
-            $table->dropColumn('specialisations');
-        });
+        //
     }
 }

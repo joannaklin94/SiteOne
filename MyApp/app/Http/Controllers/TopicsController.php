@@ -30,7 +30,7 @@ class TopicsController extends Controller
 
     public function index()
     {
-        $topics = Thesis::where('status', '=', 'not_chosen')->get();
+        $topics = Thesis::where('is_chosen', '=', 'not_chosen')->get();
 
         foreach ($topics as $topic){
 
@@ -42,6 +42,14 @@ class TopicsController extends Controller
         }
 
         return view('before_auth.topics', compact('topics'));
+    }
+
+    public function show($id)
+    {
+        $topic = Thesis::findOrFail($id);
+        $specialisations_array = explode( ';', $topic->specialisations );
+
+        return view('before_auth.topic', compact('topic', 'specialisations_array'));
     }
 
 

@@ -19,12 +19,12 @@ class CreateUsersTable extends Migration
             $table->string('surname');
             $table->string('avatar')->default('default.png');
             $table->string('role');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
 
-//            $table->primary('id');
+//            $table->primary(['id', 'email']); //dopisane
 
 //            $table->foreign('id')->references('student_id')->on('students')->onDelete('cascade');
 //           $table->foreign('id')->references('prof_id')->on('profs')->onDelete('cascade');;
