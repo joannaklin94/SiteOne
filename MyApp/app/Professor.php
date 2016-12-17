@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Professor extends Model
 {
     protected $fillable = [
-        'id', 'visit_hours', 'room', 'institute', 'telephone',
+        'prof_id', 'visit_hours', 'room', 'institute_id', 'faculty_id', 'telephone',
     ];
+
+    protected $primaryKey = 'prof_id';
 
     public function user (){
 

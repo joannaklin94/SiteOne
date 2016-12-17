@@ -18,7 +18,7 @@ class AdminMiddleware
     public function handle($request, Closure $next, $guard = null)
     {
 
-        if ($request->user()->Role()) {
+        if ($request->user()->Role()==1) {
             return $next($request);
         }
 

@@ -8,6 +8,7 @@ use App\Student;
 use App\Professor;
 use App\User;
 use App\Thesis;
+use Illuminate\Support\Facades\Input;
 use Image;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -16,9 +17,6 @@ use Illuminate\Http\Request;
 //use Request;
 use Validator;
 use Illuminate\Session\Store;
-
-
-
 
 class Prof_adsController extends Controller
 {
@@ -42,7 +40,29 @@ class Prof_adsController extends Controller
 
     public function create()
     {
+
         return view('prof.create_ad');
+    }
+
+    public function ajax()
+    {
+        $to_who = Input::get('to_who');
+
+        return response()->json($to_who);
+
+
+        $user = Auth::user();
+
+
+        $students = DB::table('users')
+            ->join('students', 'students.student_id', 'users.id')
+            ->join('theses', 'students.thesis_id', 'theses.id')
+            ->select('name', 'surname')
+            ->where('id_prof', $user->id)
+            ->get();
+
+
+        return response()->json($students);
     }
 
     public function restore($id, Request $request)

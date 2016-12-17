@@ -8,6 +8,7 @@ use App\Studentstopic;
 use App\Thesis;
 use App\Professor;
 use App\User;
+use Illuminate\Support\Facades\Input;
 use Image;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -16,8 +17,6 @@ use Illuminate\Http\Request;
 //use Request;
 use Validator;
 use Illuminate\Session\Store;
-
-
 
 
 class Profile2Controller extends Controller
@@ -30,20 +29,22 @@ class Profile2Controller extends Controller
     public function index()
     {
         $user = Auth::user();
-        $student = Student::where('id', $user->id)
-            ->first();
-        $topic = Studentstopic::where('id_student', $user->id)
+
+        $student = DB::table('students')
+            ->join('users', 'users.id', 'students.student_id')
+            ->join('roles', 'roles.role_id',  'users.role_id')
+            ->join('specialisations', 'specialisations.specialisation_id', '=', 'students.specialisation_id')
+            ->join('faculties', 'specialisations.faculty_id', '=', 'faculties.faculty_id')
+            ->where('student_id', $user->id)
             ->first();
 
-        if ($topic)
-        {
-            $topic = Thesis::where('id', $topic->id_thesis)
-                ->first();
-            $user = User::where('id', $topic->id_prof)
-                ->first();
-            $topic['name'] = $user->name;
-            $topic['surname'] = $user->surname;
-        }
+        $topic = DB::table('theses')
+            ->join('students', 'students.thesis_id', 'theses.id')
+            ->join('users', 'users.id', 'theses.id_prof')
+                        ->select('users.name', 'users.surname','theses.title_ang', 'theses.id', 'theses.id_prof')
+            ->where('student_id', $user->id)
+            ->first();
+
 
         return view('student.profile', compact('student', 'topic'));
     }
@@ -51,10 +52,23 @@ class Profile2Controller extends Controller
     public function edit()
     {
         $user = Auth::user();
-        $old_data = Student::where('id', $user->id)
+        $old_data = Student::where('student_id', $user->id)
             ->first();
+        $faculties = DB::table('faculties')
+            ->get();
 
-        return view('student.edit_profile', compact('user', 'old_data'));
+        return view('student.edit_profile', compact('user', 'old_data', 'faculties'));
+    }
+
+    public function ajax()
+    {
+        $faculty_id = Input::get('faculty_id');
+
+        $specialisations = DB::table('specialisations')
+            ->where('faculty_id', $faculty_id)
+            ->get();
+
+        return response()->json($specialisations);
     }
 
 
@@ -66,9 +80,10 @@ class Profile2Controller extends Controller
         $this->validator($input)->validate();
 
         Student::updateOrCreate(
-            ['id' => $user->id],
+            ['student_id' => $user->id],
             [   'student_number' => $input['student_number'],
-                'specialisation' => $input['specialisation'],
+                'faculty_id' => $input['faculty'],
+                'specialisation_id' => $input['specialisation'],
                 'degree' => $input['degree'],
                 'telephone' => $input['telephone']
             ]);

@@ -14,18 +14,10 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
-    <script src="/dropzone/dropzone.js"></script>
-
-    {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>--}}
-    {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>--}}
-
-    {{--<link href="/jQuery.filer/js/custom.js" rel="stylesheet">--}}
-    {{--<link href="/jQuery.filer/js/jquery.filer.min.js" rel="stylesheet">--}}
-
-    {{--<link href="/jQuery.filer/css/jquery.filer.css" rel="stylesheet">--}}
-    {{--<link href="/jQuery.filer/css/jquery.filer-dragdropbox-theme.css" rel="stylesheet">--}}
 
     @yield('header')
+    {{--<script src="/dropzone/dropzone.js"></script>--}}
+
 
 
     <!-- Scripts -->

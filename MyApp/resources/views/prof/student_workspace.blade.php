@@ -1,7 +1,7 @@
 @extends('layouts.prof')
 
-@section('header')
-
+@section('head')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 @endsection
 
 @section('content')
@@ -9,57 +9,177 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Your Workspace</div>
+                    <div class="panel-heading">Workspace</div>
 
 
                     <div class="panel-body">
                         Add files and make necessary comments. Remember to delete documents that are no longer valid.
+                        <br>
+                        <hr>
+
+                        <form action="{{ url('/prof_students/workspace') }}" class="form-horizontal"  method="post" id="uploadForm" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label class="btn btn-default btn-sm">
+                                        Chose files<input type="file" name="file" style="display:none;">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label for="description" class="control-label">Description</label>
+                                    <input type="hidden" name="student_id" value="{{$id}}">
+                                    <input id="description" type="text" class="form-control input-sm" name="description" autofocus required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                <input type="submit" class="pull-left btn btn-sm btn-primary" value="send">
+                                </div>
+                            </div>
+                        </form>
+                        <div id="message" style="color:cornflowerblue;"></div>
+                        <hr>
+                        <br><br>
 
 
-                        <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
-                        <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+                        @if( !$files->isEmpty() )
+                                <table class="table" id="files" style="width: 100%;">
+                                    <tr>
+                                        <td><strong>File</strong></td>
+                                        <td><strong>Owner</strong></td>
+                                        <td><strong>Upload date</strong></td>
+                                        <td><strong>Delete</strong></td>
+                                    </tr>
+                                    @foreach($files as $file)
+                                        <tr  id="{{$file->id}}">
+                                            <td>
+                                                <a href="{{ action('ProfstudentsController@download', [ $file->file_name]) }}">{{$file->original_name}}</a>
+                                                <br> {{$file->description}}
+                                            </td>
+                                            <td>{{$file->name}} {{$file->surname}}</td>
+                                            <td>{{$file->created_at}}</td>
+                                            <td>
+                                                {{--<a href="{{ action('ProfstudentsController@delete', [ $file->id] ) }}" ><button type="button" id="delete" class="btn btn-danger btn-sm">Delete</button></a>--}}
+                                                <a href="#" data-id="{{$file->id}}" class="delete"><button type="button" id="delete" class="btn btn-danger btn-sm">Delete</button></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </table>
+                                @endif
 
 
-                        <p>
-                            This is the most minimal example of Dropzone. The upload in this example
-                            doesn't work, because there is no actual server to handle the file upload.
-                        </p>
+                        <script>
+                            var form = document.getElementById('uploadForm');
+                            var request = new XMLHttpRequest();
 
-                        <!-- Change /upload-target to your upload address -->
-                        <form action="/upload-target" class="dropzone"></form>
-
-
-
-                        <br><br><br>
-
-                        <table class="table" style="background-color:aliceblue;">
-                        @if(!$comments->isEmpty())
-                        {{--<table class="table" style="background-color:aliceblue;">--}}
-                            <tbody>
-                                @foreach($comments as $comments)
-                            <tr>
-                                <td class="col-md-1"><img src="/uploads/{{$comments->avatar}}" class="img-rounded" style="width:32px; height:32px; margin:0px 3px;" ></td>
-                                <td  class="col-md-9"><dt>{{$comments->name}} {{$comments->surname}}</dt>{{$comments->message}}</td>
-                                <td  class="col-md-2"></td>
-                            </tr>
-                                @endforeach
-                            </tbody>
-                        {{--</table>--}}
-                        @endif
-
-                        {{--<table class="table" style="background-color:aliceblue;">--}}
-                            <thead>
-                            <form class="form-horizontal" role="addCommentForm" method="POST">{{ csrf_field() }}
-                                <tr>
-                                    <td class="col-md-1"><img src="/uploads/{{$comments->avatar}}" class="img-rounded" style="width:32px; height:32px; margin:0px 3px;" ></td>
-                                    <td  class="col-md-9"><input id="message" type="text" class="form-control" name="message" value="write comment" required></td>
-                                    <td  class="col-md-2"><input type="submit" id="submit" value="Comment" class="btn btn-primary btn-sm"></td>
-                                </tr>
-                                </form>
-                            </thead>
-                        </table>
+                            form.addEventListener('submit', function (e) {
+                                e.preventDefault();
+                                var formData = new FormData(form);
 
 
+                                request.open('post', '/prof_students/workspace');
+                                request.addEventListener('load',transferComplete)
+                                request.send(formData);
+                                $('#description').val("");
+                                document.getElementById('message').innerHTML = 'Successfully added files';
+                                var id = 8;
+
+//                                $.get('/profile1e/ajax-institute?faculty_id=' + id, function(data)
+                                $.get('/prof_students/student/view_uploads?id=' + id, function(data)
+//                                $.get('/prof_students/workspace/last_file?id=' + id, function(data)
+                                {
+                                    console.log(data);
+                                    document.getElementById('message').innerHTML = 'bla';
+
+
+                                });
+
+
+                            });
+
+                            function transferComplete(data) {
+//                                console.log(data.currentTarget.response);
+//                                var file = data.currentTarget.response;
+//                                console.log('------------------');
+
+//                                console.log(file);
+
+//                                var parsedJson = $.parseJSON(jsonToBeParsed);
+
+                                document.getElementById('message').innerHTML = '';
+
+//                                $.each(data, function(index,file){
+//                                    $("#files > tbody").append('<tr id="' + file.student_id +   '"><td>' + file.description + '</td><td>1</td><td>1</td><td>1</td></tr>');
+//
+//                                });
+
+
+
+                            }
+                        </script>
+
+
+
+                        {{--delete--}}
+                        <script type="text/javascript">
+                            $('.delete').click(function (event) {
+                                event.preventDefault();
+                                var id = $(this).data('id');
+                                //ajax
+                                console.log(id);
+                                $('#' + id).remove();
+
+                                $.get('/prof_students/student/workspace/delete?id=' + id, function(data)
+                                {
+                                    console.log(data);
+
+                                });
+                            });
+                        </script>
+
+                        {{--<script>--}}
+                            {{--var form = document.getElementById('uploadForm');--}}
+                            {{--var request = new XMLHttpRequest();--}}
+
+                            {{--form.addEventListener('submit', function (e) {--}}
+                              {{--e.preventDefault();--}}
+                                {{--var formData = new FormData(form);--}}
+
+                                {{--request.open('post', '/prof_students/workspace');--}}
+                                {{--request.addEventListener('load',transferComplete)--}}
+                                {{--request.send(formData);--}}
+                                {{--$('#description').val("");--}}
+                                {{--document.getElementById('message').innerHTML = 'Successfully added files';--}}
+                            {{--});--}}
+
+                            {{--function transferComplete(data) {--}}
+{{--//                                console.log(data.currentTarget.response);--}}
+                                {{--var file = data.currentTarget.response;--}}
+                                {{--console.log('------------------');--}}
+
+                                {{--console.log(file);--}}
+
+                                {{--var parsedJson = $.parseJSON(jsonToBeParsed);--}}
+
+                                {{--document.getElementById('message').innerHTML = '';--}}
+
+{{--//                                $.each(data, function(index,file){--}}
+{{--//                                    $("#files > tbody").append('<tr id="' + file.student_id +   '"><td>' + file.description + '</td><td>1</td><td>1</td><td>1</td></tr>');--}}
+{{--//--}}
+{{--//                                });--}}
+
+
+
+                            {{--}--}}
+                        {{--</script>--}}
+
+
+                        <br>
+
+                        <hr>
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <div class="row">
@@ -75,13 +195,13 @@
                         </div>
 
 
-
-
-
-                    </div>
+                                <div class="col-md-6">
+                                    <a class="button" href="{{ url('/prof_students') }}"><button type="button" class="btn btn-default">Back to students</button></a>
+                                </div>
 
             </div>
         </div>
     </div>
+
 
 @endsection

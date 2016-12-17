@@ -14,16 +14,19 @@ class CreateProfessorsTable extends Migration
     public function up()
     {
         Schema::create('professors', function (Blueprint $table) {
-            $table->integer('id')->unsigned();
-            $table->string('institute');
+            $table->integer('prof_id')->unsigned();
+            $table->integer('faculty_id')->unsigned();
+            $table->integer('institute_id')->unsigned();
             $table->string('room');
-            $table->string('visit_hours');
+            $table->text('visit_hours');
             $table->string('telephone');
-            //$table->rememberToken();
             $table->timestamps();
 
-            $table->unique(['id','telephone']);
-            $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
+            $table->unique(['telephone']);
+
+            $table->foreign('prof_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('institute_id')->references('institute_id')->on('institutes');
+            $table->foreign('faculty_id')->references('faculty_id')->on('faculties');
         });
     }
 

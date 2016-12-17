@@ -11,49 +11,68 @@ class InstitutionsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('roles')->insert([
+        DB::table('institutes')->insert([
             [
-                'id' => 1,
-                'institute' => 'Instytut Systemow Inzynierii Elektrycznej',
+                'institute_id' => 1,
+                'name_pol' => 'Instytut Systemow Inzynierii Elektrycznej',
+                'name_eng' => null,
+                'faculty_id' => 1,
             ],
 
             [
-                'id' => 2,
-                'institute' => 'Instytut Automatyki',
+                'institute_id' => 2,
+                'name_pol' => 'Instytut Automatyki',
+                'name_eng' => null,
+                'faculty_id' => 1,
             ],
 
             [
-                'id' => 3,
-              'institute' => 'Instytut Mechatroniki i Systemow Informatycznych',
+                'institute_id' => 3,
+                'name_pol' => 'Instytut Mechatroniki i Systemow Informatycznych',
+                'name_eng' => null,
+                'faculty_id' => 1,
             ],
 
             [
-                'id' => 4,
-                'institute' => 'Instytut Elektroenergetyki',
+                'institute_id' => 4,
+                'name_pol' => 'Instytut Elektroenergetyki',
+                'name_eng' => null,
+                'faculty_id' => 1,
             ],
 
             [
-                'id' => 5,
-                'institute' => 'Instytut Elektroniki',
+                'institute_id' => 5,
+                'name_pol' => 'Instytut Elektroniki',
+                'name_eng' => null,
+                'faculty_id' => 1,
             ],
 
             [
-                'id' => 6,
-                'institute' => 'Instytut Informatyki Stosowanej',
+                'institute_id' => 6,
+                'name_pol' => 'Instytut Informatyki Stosowanej',
+                'name_eng' => null,
+                'faculty_id' => 1,
             ],
 
             [
-                'id' => 7,
-                'institute' => 'Katedra Mikroelektroniki i Technik Informatycznych',
+                'institute_id' => 7,
+                'name_pol' => 'Katedra Mikroelektroniki i Technik Informatycznych',
+                'name_eng' => null,
+                'faculty_id' => 1,
             ],
 
             [
-                'id' => 8,
-                'institute' => 'Katedra aparatow Elektrycznych',
+                'institute_id' => 8,
+                'name_pol' => 'Katedra aparatow Elektrycznych',
+                'name_eng' => null,
+                'faculty_id' => 1,
             ],
+
             [
-                'id' => 9,
-                'institute' => 'Katedra Przyrzadow Polprzewodnikowych i Optoelektronicznych',
+                'institute_id' => 9,
+                'name_pol' => 'Katedra Przyrzadow Polprzewodnikowych i Optoelektronicznych',
+                'name_eng' => null,
+                'faculty_id' => 1,
             ]
         ]);
     }

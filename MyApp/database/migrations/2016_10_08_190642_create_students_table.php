@@ -14,21 +14,21 @@ class CreateStudentsTable extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->integer('id')->unsigned();  //raczej int ale unique chyba niestarcza
+            $table->integer('student_id')->unsigned();
             $table->integer('student_number');
-            $table->string('specialisation');
+            $table->integer('faculty_id')->unsigned();
+            $table->integer('specialisation_id')->unsigned();
             $table->string('degree');
+            $table->integer('thesis_id')->nullable()->default(null);
             $table->string('telephone');
-//           $table->number('year');
-            $table->boolean('status')->default(1);  //nie wiem czy zosatwics
-            //$table->rememberToken();
+            $table->boolean('status')->default(1);
             $table->timestamps();
 
+            $table->unique(['student_number','telephone']);
+            $table->primary('student_id');
 
-           $table->unique(['id', 'student_number','telephone']);
-
-//           $table->primary('student_id');
-            $table->foreign('id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('specialisation_id')->references('specialisation_id')->on('specialisations');
         });
     }
 
@@ -39,11 +39,6 @@ class CreateStudentsTable extends Migration
      */
     public function down()
     {
-//        Schema::table('students', function ($table) {
-//            $table->dropPrimary('student_id');
-//            $table->dropForeign('student_id');
-//        });
-
         Schema::drop('students');
     }
 }

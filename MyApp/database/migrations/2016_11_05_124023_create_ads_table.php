@@ -17,12 +17,11 @@ class CreateAdsTable extends Migration
             $table->increments('id');
             $table->integer('id_prof')->unsigned();
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
+            $table->integer('id_student')->nullable()->default(null);
             $table->date('finish_date');
-            //$table->rememberToken();
             $table->timestamps();
 
-            $table->unique(['id']);
             $table->foreign('id_prof')->references('id')->on('users')->onDelete('cascade');
         });
     }

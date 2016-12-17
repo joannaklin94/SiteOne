@@ -85,8 +85,8 @@
                             <label class="col-md-4 control-label">You are</label>
                             <div class="col-md-6">
                                 <select name="role" class="form-control" required>
-                                    <option id="role" value="student">Student</option>
-                                    <option id="role" value="prof">Professor</option>
+                                    <option id="role" value="3">Student</option>
+                                    <option id="role" value="2">Professor</option>
                                 </select>
                             </div>
                         </div>

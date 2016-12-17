@@ -23,10 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if( \Auth::user()->role == 'admin' ) {return redirect('/home0');}
-        if( \Auth::user()->role == 'prof' ) {return redirect('/home1');}
-        if( \Auth::user()->role == 'student' ) {return redirect('/home2');}
-
-        //return view('home');  // tu by mozna dawac 3 routes
+        if( \Auth::user()->role_id == 1 ) {return redirect('/home0');}
+        if( \Auth::user()->role_id == 2 ) {return redirect('/home1');}
+        if( \Auth::user()->role_id == 3 ) {return redirect('/home2');}
     }
 }

@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use App\Student;
 use App\Professor;
 use App\User;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Input;
 use Image;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -14,9 +16,6 @@ use Illuminate\Http\Request;
 //use Request;
 use Validator;
 use Illuminate\Session\Store;
-
-
-
 
 class Profile1Controller extends Controller
 {
@@ -28,35 +27,58 @@ class Profile1Controller extends Controller
     public function index()
     {
         $user = Auth::user();
-        $prof = DB::table('professors')
-            ->where('id', $user->id)
+
+        $role = DB::table('roles')
+            ->where('role_id', $user->role_id)
             ->first();
 
-        return view('prof.profile', compact('prof','user'));
+        $prof = DB::table('professors')
+            ->join('institutes', 'professors.institute_id', '=', 'institutes.institute_id')
+            ->join('faculties', 'institutes.faculty_id', '=', 'faculties.faculty_id')
+            ->select('professors.*', 'institutes.name_pol', 'faculties.faculty_pol')
+            ->where('prof_id', $user->id)
+            ->first();
+
+        return view('prof.profile', compact('prof','user', 'role'));
     }
 
     public function edit()
     {
         $user = Auth::user();
-        $old_profile = Professor::find($user->id);
+        $old_profile = Professor::where('prof_id', $user->id)->first();
+        $faculties = DB::table('faculties')
+            ->get();
 
-        return view('prof.edit_profile', compact('user', 'old_profile'));
+        return view('prof.edit_profile', compact('user', 'old_profile','faculties'));
+    }
+
+    public function ajax()
+    {
+        $faculty_id = Input::get('faculty_id');
+
+        $faculties = DB::table('institutes')
+            ->select('name_pol', 'institute_id')
+            ->where('faculty_id', $faculty_id)
+            ->get();
+
+        return response()->json($faculties);
     }
 
     public function store(Request $request)
     {
-
         $user = Auth::user();
 
         $input = $request->all();
         $this->validator($input)->validate();
-        $input['id'] = $user->id;
 
         Professor::updateOrCreate(
-            ['id' => $user->id],
-            [   'room' => $input['room'],
+            ['prof_id' => $user->id],
+            [
+                'prof_id' => $user->id,
+                'room' => $input['room'],
                 'visit_hours' => $input['visit_hours'],
-                'institute' => $input['institute'],
+                'institute_id' => $input['institute'],
+                'faculty_id' => $input['faculty'],
                 'telephone' => $input['telephone']
             ]);
 
@@ -83,8 +105,9 @@ class Profile1Controller extends Controller
     {
         return Validator::make($data, [
             'telephone' =>  'required|numeric',
+            'institute' =>  'required',
             'room' => 'required|alpha_num',
-             'visit_hours' =>  'required',
+            'visit_hours' =>  'required',
         ]);
     }
 

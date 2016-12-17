@@ -1,4 +1,8 @@
-@extends('layouts.student')
+@extends('layouts.prof')
+
+@section('head')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+@endsection
 
 @section('content')
 
@@ -8,25 +12,34 @@
                 <div class="panel panel-default">
 
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" id="form" method="post" action="{{ url('/profile1') }}">
+                        <form class="form-horizontal" role="form" id="profile" method="post" action="{{ url('/profile1') }}">
                             {{ csrf_field() }}
                             <fieldset>
                                 <legend>Profession</legend>
 
                                 <div class="form-group">
+                                    <label for="faculty" class="col-md-4 control-label">Faculty</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="faculty" id="faculty">
+                                            @foreach ($faculties as $faculty)
+                                                <option value="{{$faculty->faculty_id}}">{{$faculty->faculty_pol}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-group{{ $errors->has('institute') ? ' has-error' : '' }}">
                                     <label for="institute" class="col-md-4 control-label">Institute</label>
                                     <div class="col-md-6">
                                         <select id="institute" class="form-control" name="institute">
-                                            <option value="Instytut Systemow Inzynierii Elektrycznej">Instytut Systemow Inzynierii Elektrycznej</option>
-                                            <option value="Instytut Automatyki">  Instytut Automatyki</option>
-                                            <option value="Instytut Mechatroniki i Systemow Informatycznych">  Instytut Mechatroniki i Systemow Informatycznych</option>
-                                            <option value="Instytut Elektroenergetyki">  Instytut Elektroenergetyki</option>
-                                            <option value="Instytut Elektroniki">Instytut Elektroniki</option>
-                                            <option value="Instytut Informatyki Stosowanej">Instytut Informatyki Stosowanej</option>
-                                            <option value="Katedra Mikroelektroniki i Technik Informatycznych">  Katedra Mikroelektroniki i Technik Informatycznych</option>
-                                            <option value="Katedra aparatow Elektrycznych">  Katedra aparatow Elektrycznych</option>
-                                            <option value="Katedra Przyrzadow Polprzewodnikowych i Optoelektronicznych"> Katedra Przyrzadow Polprzewodnikowych i Optoelektronicznych</option>
+                                            <option value="">Please select faculty first</option>
                                         </select>
+                                        @if ($errors->has('institute'))
+                                            <span class="help-block">
+                                             <strong>{{ $errors->first('institute') }}</strong>
+                                        </span>
+                                        @endif
                                     </div>
                                 </div>
                             </fieldset>
@@ -36,8 +49,12 @@
                                 <div class="form-group{{ $errors->has('room') ? ' has-error' : '' }}">
                                     <label for="room" class="col-md-4 control-label">Room</label>
                                     <div class="col-md-6">
-                                            <input id="room" type="text" class="form-control" name="room" value="{{  old('room') ?: $old_profile->room }}"autofocus>
-                                        @if ($errors->has('room'))
+                                        @if(isset($old_profile))
+                                        <input id="room" type="text" class="form-control" name="room" value="{{  old('room') ?: $old_profile->room  }}"autofocus>
+                                        @else
+                                            <input id="room" type="text" class="form-control" name="room" value="{{  old('room') }}"autofocus>
+                                        @endif
+                                            @if ($errors->has('room'))
                                             <span class="help-block">
                                              <strong>{{ $errors->first('room') }}</strong>
                                         </span>
@@ -48,8 +65,12 @@
                                 <div class="form-group{{ $errors->has('visit_hours') ? ' has-error' : '' }}">
                                     <label for="visit_hours" class="col-md-4 control-label">Visit hours</label>
                                     <div class="col-md-6">
-                                        <textarea rows="3" cols="50" form="form" class="form-control" id="visit_hours" name="visit_hours" value="{{ old('visit_hours' ?: $old_profile->visit_hours) }}"></textarea>
-                                    @if ($errors->has('visit_hours'))
+                                        @if(isset($old_profile))
+                                            <textarea rows="3" cols="50" class="form-control" id="visit_hours" name="visit_hours">{{ old('visit_hours') ?: $old_profile->visit_hours }}</textarea>
+                                        @else
+                                            <textarea rows="3" cols="50" class="form-control" id="visit_hours" name="visit_hours">{{ old('visit_hours') }}</textarea>
+                                        @endif
+                                            @if ($errors->has('visit_hours'))
                                             <span class="help-block">
                                              <strong>{{ $errors->first('visit_hours') }}</strong>
                                         </span>
@@ -57,12 +78,14 @@
                                     </div>
                                 </div>
 
-
-
                                 <div class="form-group{{ $errors->has('telephone') ? ' has-error' : '' }}">
                                     <label for="telephone" class="col-md-4 control-label">Telephone</label>
                                     <div class="col-md-6">
-                                        <input id="telephone" type="text" class="form-control" name="telephone" value="{{ old('telephone') ?: $old_profile->telephone}}"autofocus>
+                                        @if(isset($old_profile))
+                                            <input id="telephone" type="text" class="form-control" name="telephone" value="{{ old('telephone') ?: $old_profile->telephone}}"autofocus>
+                                        @else
+                                            <input id="telephone" type="text" class="form-control" name="telephone" value="{{ old('telephone') }}"autofocus>
+                                        @endif
                                         @if ($errors->has('telephone'))
                                             <span class="help-block">
                                              <strong>{{ $errors->first('telephone') }}</strong>
@@ -84,7 +107,27 @@
                             </div>
                             {{ csrf_field() }}
                         </form>
-                    </div>
+
+
+                        <script type="text/javascript">
+                            $('#faculty').on('change', function (e)
+                            {
+                                console.log(e);
+                                var  faculty_id =  e.target.value;
+
+                                //ajax
+                                $.get('/profile1e/ajax-institute?faculty_id=' + faculty_id, function(data)
+                                {
+                                    console.log(data);
+                                    $('#institute').empty();
+                                    $.each(data, function(index,instituteObj){
+                                        $('#institute').append('<option value="'+instituteObj.institute_id+'">'+instituteObj.name_pol+'</option>');
+                                    });
+                                });
+                            });
+                        </script>
+
+                            </div>
                 </div>
             </div>
         </div>

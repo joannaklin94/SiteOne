@@ -16,7 +16,7 @@ class ProfMiddleware
     public function handle($request, Closure $next)
     {
 
-        if ($request->user()->Role()==1) {
+        if ($request->user()->Role()==2) {
             return $next($request);
         }
 

@@ -1,4 +1,4 @@
-@extends('layouts.prof')
+@extends('layouts.student')
 
 
 
@@ -9,7 +9,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div style="float:right; margin-top: 5%;">
+                        <div style="float:right; margin-top: 5%;margin-right: 15%;">
                             <img src="/uploads/{{$user->avatar}}" class="img-thumbnail" style="width:150px; height:150px;" ><br>
                         </div>
 
@@ -22,7 +22,7 @@
                                 <li><h4> {{ $user->role }} </h4></li><br>
                                 </ul>
                             <a class="button" href="{{ url('/profile2') }}"><button type="button" class="btn btn-default">Back to profile</button></a>
-                        </div>
+                        </div><br>
                     </div>
 
                     <div class="panel-body">
@@ -34,8 +34,12 @@
                                 <table class="table table-user-information">
                                     <tbody>
                                     <tr>
+                                        <td>Faculty </td>
+                                        <td>{{ $prof->faculty_pol }}</td>
+                                    </tr>
+                                    <tr>
                                         <td>Institute </td>
-                                        <td>{{ $prof->institute }}</td>
+                                        <td>{{ $prof->name_pol }}</td>
                                     </tr>
                                     <tr>
                                         <td>Room</td>

@@ -18,16 +18,15 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('avatar')->default('default.png');
-            $table->string('role');
-            $table->string('email')->unique();
+            $table->integer('role_id')->unsigned();
+            $table->string('email');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
 
-//            $table->primary(['id', 'email']); //dopisane
+            $table->unique(['email']);
 
-//            $table->foreign('id')->references('student_id')->on('students')->onDelete('cascade');
-//           $table->foreign('id')->references('prof_id')->on('profs')->onDelete('cascade');;
+            $table->foreign('role_id')->references('role_id')->on('roles');
         });
     }
 
@@ -38,11 +37,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-//        Schema::table('users', function ($table) {
-//            $table->dropPrimary('id');
-//            $table->dropForeign('id');
-//        });
-
         Schema::drop('users');
     }
 }

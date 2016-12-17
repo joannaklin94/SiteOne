@@ -6,7 +6,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div style="float:right; margin-right: 15%; margin-top: 10%;">
+                        <div style="float:right; margin-right: 15%; margin-top: 5%;">
                             <img src="/uploads/{{Auth::user()->avatar}}" class="img-thumbnail" style="width:150px; height:150px;" ><br>
                             <form enctype="multipart/form-data" action="profile2a" method="POST">
                                 <label class="btn btn-default btn-file btn-sm">Update profile image
@@ -23,10 +23,10 @@
                         <ul class="list-unstyled">
                             <br>
                             <li><h4> {{ Auth::user()->email }}</h4></li>
-                            <li><h4> {{ Auth::user()->role }} </h4></li><br>
-                            <li><a class="button" href="{{ url('/profile2e') }}"><button type="button" class="btn btn-primary">Edit My Profile</button></a></li>
-                            <li><br><a class="button" href="{{ url('/profile2/topic') }}"><button type="button" class="btn btn-success">Chose thesis topic</button></a></li>
-                        </ul><br>
+                            <li><h4> student </h4></li><br>
+                        </ul>
+                           <br><a class="button" href="{{ url('/profile2e') }}"><button type="button" class="btn btn-primary">Edit My Profile</button></a></li>
+                            <br><br><br>
                         </div>
                     </div>
 
@@ -41,8 +41,12 @@
                                         <td>{{ $student->student_number }}</td>
                                     </tr>
                                     <tr>
+                                        <td>Faculty</td>
+                                        <td>{{ $student->faculty_pol }}</td>
+                                    </tr>
+                                    <tr>
                                         <td>Specialisation</td>
-                                        <td>{{ $student->specialisation }}</td>
+                                        <td>{{ $student->specialisation_name }}</td>
                                     </tr>
                                     <tr>
                                         <td>Degree</td>
@@ -62,7 +66,7 @@
                                     <tbody>
                                     <tr>
                                         <td>title</td>
-                                        <td><a href="{{ action('Student_topicController@show_topic', [ $topic->id] ) }}">{{ $topic->title }}</a></td>
+                                        <td><a href="{{ action('Student_topicController@show_topic', [ $topic->id] ) }}">{{ $topic->title_ang }}</a></td>
                                     </tr>
                                     <tr>
                                         <td>Supervisor</td>

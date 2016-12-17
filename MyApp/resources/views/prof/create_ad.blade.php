@@ -1,4 +1,8 @@
-@extends('layouts.student')
+@extends('layouts.prof')
+
+@section('head')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+@endsection
 
 @section('content')
 
@@ -25,13 +29,6 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="finish_date" class="col-md-4 control-label">When your ad will expire?</label>
-                                    <div class="col-md-6">
-                                        <input id="finish_date" type="date" class="form-control" name="finish_date" value="{{ old('finish_date') }}"autofocus>
-                                    </div>
-                                </div>
-
                                 <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                     <label for="description" class="col-md-4 control-label">Description </label>
                                     <div class="col-md-6">
@@ -43,6 +40,43 @@
                                         @endif
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="finish_date" class="col-md-4 control-label">When your ad will expire?</label>
+                                    <div class="col-md-6">
+                                        <input id="finish_date" type="date" class="form-control" name="finish_date" value="{{ old('finish_date') }}"autofocus>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="to_who" class="col-md-4 control-label">Who do you want to inform?</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="to_who" id="to_who">
+                                            <option value="all">everyone</option>
+                                            <option value="chosen">chose students</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-group{{ $errors->has('students') ? ' has-error' : '' }}">
+                                        <label for="students" class="col-md-4 control-label">Chose students</label>
+                                        <div class="col-md-6">
+{{--                                            @if(isset($students))--}}
+                                            <select id="students" class="form-control" name="students">
+{{--                                                @foreach ($students as $student)--}}
+                                                {{--<option value="{{$student->id}}">{{$student->name}} {{$student->surname}}</option>--}}
+                                                {{--@endforeach--}}
+                                            </select>
+                                            {{--@endif--}}
+                                            @if ($errors->has('students'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('students') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
                             </fieldset>
 
                             <div class="form-group">
@@ -55,8 +89,40 @@
 
                                 </div>
                             </div>
-                            {{ csrf_field() }}
                         </form>
+
+                        <script type="text/javascript">
+                            $('#to_who').on('change', function (e)
+                            {
+                                console.log(e);
+                                var  to_who =  e.target.value;
+                                console.log(to_who);
+
+                                if( e.target.value = 'chosen')
+                                {
+                                    //ajax
+                                    $.get('/prof_ads/create/ajax-students?to_who=' + to_who, function(data)
+                                    {
+                                        console.log(data);
+                                        $('#students').empty();
+                                        $.each(data, function(index,studentObj){
+                                            $('#students').append('<option value="'+studentObj.id+'">' + studentObj.name + studentObj.surname + '</option>');
+                                        });
+                                    });
+                                }
+
+                                else{
+                                    console.log('o');
+                                }
+
+//                                else
+//                                {
+//                                    $('#students').empty();
+//                                }
+                            });
+                        </script>
+
+
                     </div>
                 </div>
             </div>

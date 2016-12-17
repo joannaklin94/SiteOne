@@ -15,7 +15,7 @@ class StudentMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user()->Role()==2) {
+        if ($request->user()->Role()==3) {
             return $next($request);
         }
 

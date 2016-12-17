@@ -16,6 +16,8 @@ class Student extends Model
         return $this->belongsTo('App/User');
     }
 
+    protected $primaryKey = 'student_id';
+
 //    public function thesis()
 //    {
 //        return $this->hasOne('App\Thesis');

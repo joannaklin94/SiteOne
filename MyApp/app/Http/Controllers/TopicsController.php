@@ -16,9 +16,6 @@ use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Session\Store;
 
-
-
-
 class TopicsController extends Controller
 {
 
@@ -47,12 +44,20 @@ class TopicsController extends Controller
     public function show($id)
     {
         $topic = Thesis::findOrFail($id);
-        $specialisations_array = explode( ';', $topic->specialisations );
+        $array = explode( ';', $topic->specialisations );
+        $specialisations_array=array();
+
+        for ($i=0; $i<count($array); $i++)
+        {
+            $result = DB::table('specialisations')
+                ->where('specialisation_id', $array[$i])
+                ->first();
+
+            array_push($specialisations_array, $result->specialisation_name);
+        }
 
         return view('before_auth.topic', compact('topic', 'specialisations_array'));
     }
-
-
 
 }
 

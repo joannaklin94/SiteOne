@@ -151,15 +151,33 @@ class Student_topicController extends Controller
     public function show_topic($id)
     {
         $topic = Thesis::findOrFail($id);
-        $specialisations_array = explode( ';', $topic->specialisations );
+        $array = explode( ';', $topic->specialisations );
+        $specialisations_array=array();
+
+        for ($i=0; $i<count($array); $i++)
+        {
+            $result = DB::table('specialisations')
+                ->where('specialisation_id', $array[$i])
+                ->first();
+
+            array_push($specialisations_array, $result->specialisation_name);
+        }
 
         return view('student.topic', compact('topic', 'specialisations_array'));
     }
 
     public function show_prof($id)
     {
-        $prof = Professor::findOrFail($id);
-        $user = User::findOrFail($id);
+        $user = DB::table('users')
+            ->join('roles', 'users.role_id', 'roles.role_id')
+            ->where('id', $id)
+            ->first();
+
+        $prof = DB::table('professors')
+            ->join('institutes', 'institutes.institute_id', 'professors.institute_id')
+            ->join('faculties', 'faculties.faculty_id', 'professors.faculty_id')
+            ->where('prof_id', $id)
+            ->first();
 
         return view('student.student_prof', compact('prof', 'user'));
     }

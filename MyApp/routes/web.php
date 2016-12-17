@@ -45,8 +45,6 @@ Route::group(['middleware' => 'admin', 'auth'], function () {
 
 });
 
-
-/*After logging - user: prof*/
 Route::group(['middleware' => 'prof', 'auth'], function () {
 
     Route::get('/home1', function () {
@@ -58,6 +56,7 @@ Route::group(['middleware' => 'prof', 'auth'], function () {
 
     Route::get('/prof_topics','Prof_topicsController@index');
     Route::get('/prof_topics/create','Prof_topicsController@create');
+    Route::get('/prof_topics/create/ajax-specialisations','Prof_topicsController@ajax');
     Route::get('/prof_topics/edit/{id}','Prof_topicsController@edit');
     Route::get('/prof_topics/delete/{id}','Prof_topicsController@delete');
     Route::post('/prof_topics','Prof_topicsController@store');
@@ -74,20 +73,24 @@ Route::group(['middleware' => 'prof', 'auth'], function () {
 
     Route::get('/profile1','Profile1Controller@index');
     Route::get('/profile1e','Profile1Controller@edit');
+    Route::get('/profile1e/ajax-institute','Profile1Controller@ajax');
     Route::post('/profile1','Profile1Controller@store');
     Route::post('/profile1a','Profile1Controller@upload_avatar');
 
 });
+
+
+
+/*After logging - user: prof*/
+
+
 /*After logging - user: student*/
 Route::group(['middleware' => 'student', 'auth'], function () {
 
     Route::get('/home2','Home2Controller@index');
-
-    Route::get('/workspace2', function () {
-        return view('/student.workspace'); });
-
     Route::get('/profile2','Profile2Controller@index');
     Route::get('/profile2e','Profile2Controller@edit');
+    Route::get('/profile2e/ajax-specialisation','Profile2Controller@ajax');
     Route::post('/profile2','Profile2Controller@store');
     Route::post('/profile2a','Profile2Controller@upload_avatar');
 

@@ -1,5 +1,9 @@
 @extends('layouts.student')
 
+@section('header')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+@endsection
+
 @section('content')
 
     <div class="container">
@@ -10,7 +14,7 @@
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="post" action="{{ url('/profile2') }}">
                             {{ csrf_field() }}
-                            <fieldset>
+                        {{--<fieldset>--}}
                                 <legend>Overview</legend>
                             <div class="form-group{{ $errors->has('student_number') ? ' has-error' : '' }}">
                                 <label for="student_number" class="col-md-4 control-label">Student number</label>
@@ -24,23 +28,33 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="specialisation" class="col-md-4 control-label">Specialisation</label>
-                                <div class="col-md-6">
-                                    <select id="specialisation" class="form-control" name="specialisation">
-                                        <option value="Automatyka i Robotyka">Automatyka i Robotyka</option>
-                                        <option value="Mechatronika">Mechatronika</option>
-                                        <option value="Systemy Sterowania Inteligentnymi Budynkami">Systemy Sterowania Inteligentnymi Budynkami</option>
-                                        <option value="Transport">Transport</option>
-                                        <option value="Elektronika i Telekomunikacja">Elektronika i Telekomunikacja</option>
-                                        <option value="Telecommunication and Computer Science (IFE)">Telecommunication and Computer Science (IFE)</option>
-                                        <option value="Elektrotechnika">Elektrotechnika</option>
-                                        <option value="Informatyka">Informatyka</option>
-                                        <option value="Computer Science (IFE)">Computer Science (IFE)</option>
-                                        <option value="Inżynieria Biomedyczna">Inżynieria Biomedyczna</option>
-                                    </select>
+
+
+                                <div class="form-group">
+                                    <label for="faculty" class="col-md-4 control-label">Faculty</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="faculty" id="faculty">
+                                            @foreach ($faculties as $faculty)
+                                                <option value="{{$faculty->faculty_id}}">{{$faculty->faculty_pol}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
+
+                                    <div class="form-group{{ $errors->has('specialisation') ? ' has-error' : '' }}">
+                                        <label for="specialisation" class="col-md-4 control-label">Specialisation</label>
+                                        <div class="col-md-6">
+                                            <select id="specialisation" class="form-control" name="specialisation">
+                                                <option value="">Please select faculty first</option>
+                                            </select>
+                                            @if ($errors->has('specialisation'))
+                                                <span class="help-block">
+                                             <strong>{{ $errors->first('specialisation') }}</strong>
+                                        </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
 
                             <div class="form-group">
                                 <label for="degree" class="col-md-4 control-label">Degree</label>
@@ -51,7 +65,7 @@
                                     </select>
                                 </div>
                             </div>
-                    </fieldset>
+                    {{--</fieldset>--}}
 
 
 
@@ -77,14 +91,32 @@
                                 <div class="col-md-8 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
                                         Save changes
-                                    </button>
-
-                                    <a class="button" href="{{ url('/profile2') }}"><button type="button" class="btn btn-default">Undo</button></a>
-
+                                    </button><a class="button" href="{{ url('/profile2') }}"><button type="button" class="btn btn-default">Undo</button></a>
                                 </div>
                             </div>
-                            {{ csrf_field() }}
+
                         </form>
+
+                        <script type="text/javascript">
+                            $('#faculty').on('change', function (e)
+                            {
+                                console.log(e);
+                                var  faculty_id =  e.target.value;
+                                console.log(faculty_id);
+
+                                //ajax
+                                $.get('/profile2e/ajax-specialisation?faculty_id=' + faculty_id, function(data)
+                                {
+                                    console.log(data);
+                                    $('#specialisation').empty();
+                                    $.each(data, function(index,specObj){
+                                        $('#specialisation').append('<option value="'+specObj.specialisation_id+'">'+specObj.specialisation_name+'</option>');
+                                    });
+                                });
+                            });
+                        </script>
+
+
                     </div>
                 </div>
             </div>

@@ -53,6 +53,31 @@ class CommentsTableSeeder extends Seeder
                 'updated_at' => null,
         ],
 
+
+        [
+            'user_id' => 8,
+            'message' => 'What?',
+            'id_student' => null,
+            'created_at' => Carbon::now(),
+            'updated_at' => null,
+        ],
+
+        [
+            'user_id' => 8,
+            'message' => 'I think I now what to do now',
+            'id_student' => null,
+            'created_at' => Carbon::now(),
+            'updated_at' => null,
+        ],
+
+        [
+            'user_id' => 2,
+            'message' => 'Hmmm nope...',
+            'id_student' => 8,
+            'created_at' => Carbon::now(),
+            'updated_at' => null,
+        ],
+
         [
                 'user_id' => 5,
                 'message' => 'Hmmm...yeah',

@@ -13,53 +13,63 @@ class SpecialisationsTableSeeder extends Seeder
     {
         DB::table('specialisations')->insert([
             [
-                'id' => 1,
-                'specialisation' => 'Automatyka i Robotyka' ,
+                'specialisation_id' => 1,
+                'name' => 'Automatyka i Robotyka' ,
+                'faculty_id' => 1,
             ],
 
             [
-                'id' => 2,
-                'specialisation' => 'Mechatronika' ,
+                'specialisation_id' => 2,
+                'name' => 'Mechatronika' ,
+                'faculty_id' => 1,
             ],
 
             [
-                'id' => 3,
-                'specialisation' => 'Systemy Sterowania Inteligentnymi Budynkami' ,
+                'specialisation_id' => 3,
+                'name' => 'Systemy Sterowania Inteligentnymi Budynkami' ,
+                'faculty_id' => 1,
             ],
 
             [
-                'id' => 4,
-                'specialisation' => 'Transport' ,
+                'specialisation_id' => 4,
+                'name' => 'Transport' ,
+                'faculty_id' => 1,
             ],
 
             [
-                'id' => 5,
-                'specialisation' => 'Elektronika i Telekomunikacja' ,
+                'specialisation_id' => 5,
+                'name' => 'Elektronika i Telekomunikacja' ,
+                'faculty_id' => 1,
             ],
 
             [
-                'id' => 6,
-                'specialisation' => 'Telecommunication and Computer Science (IFE)' ,
+                'specialisation_id' => 6,
+                'name' => 'Telecommunication and Computer Science (IFE)' ,
+                'faculty_id' => 1,
             ],
 
             [
-                'id' => 7,
-                'specialisation' => 'Elektrotechnika' ,
+                'specialisation_id' => 7,
+                'name' => 'Elektrotechnika' ,
+                'faculty_id' => 1,
             ],
 
             [
-                'id' => 8,
-                'specialisation' => 'Informatyka' ,
+                'specialisation_id' => 8,
+                'name' => 'Informatyka' ,
+                'faculty_id' => 1,
             ],
 
             [
-                'id' => 9,
-                'specialisation' => 'Computer Science (IFE)' ,
+                'specialisation_id' => 9,
+                'name' => 'Computer Science (IFE)' ,
+                'faculty_id' => 1,
             ],
 
             [
-                'id' => 10,
-                'specialisation' => 'Inżynieria Biomedyczna' ,
+                'specialisation_id' => 10,
+                'name' => 'Inżynieria Biomedyczna' ,
+                'faculty_id' => 1,
             ]
 
         ]);

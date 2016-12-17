@@ -22,7 +22,6 @@
 
                     <div class="panel-body">
 
-
                     @if( !$topics->isEmpty() )
                         <div class=" col-md-9 col-lg-9 ">
 
@@ -35,7 +34,7 @@
                                 @foreach( $topics as $topic )
                                 <tr>
                                     <td>
-                                        <h5><a href="{{ action('Prof_topicsController@show', [ $topic->id] ) }}" > {{ $topic->title  }} ({{ $topic->degree }})</a></h5>
+                                        <h5><a href="{{ action('Prof_topicsController@show', [ $topic->id] ) }}" > {{ $topic->title_ang  }} ({{ $topic->degree }})</a></h5>
                                     </td>
                                     <td>
                                         <a href="{{ action('Prof_topicsController@edit', [ $topic->id] ) }}" ><button type="button" class="btn btn-success btn-sm">Edit</button></a>
