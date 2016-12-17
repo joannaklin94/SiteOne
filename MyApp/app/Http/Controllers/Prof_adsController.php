@@ -46,10 +46,7 @@ class Prof_adsController extends Controller
 
     public function ajax()
     {
-        $to_who = Input::get('to_who');
-
-        return response()->json($to_who);
-
+//        $to_who = Input::get('to_who');
 
         $user = Auth::user();
 
@@ -57,7 +54,7 @@ class Prof_adsController extends Controller
         $students = DB::table('users')
             ->join('students', 'students.student_id', 'users.id')
             ->join('theses', 'students.thesis_id', 'theses.id')
-            ->select('name', 'surname')
+            ->select('users.name', 'users.surname', 'users.id')
             ->where('id_prof', $user->id)
             ->get();
 
@@ -84,26 +81,59 @@ class Prof_adsController extends Controller
     }
 
 
+//    public function store(Request $request)
+//    {
+//        $id = Auth::user()->id;
+//
+//        $input = $request->all();
+//        $this->validator($input)->validate();
+//        $input['id_prof'] = $id;
+//
+//        Ad::create($input);
+//
+////        $request->session()->flash('message', 'You successfully added new topic!!');
+//
+//        return redirect("prof_ads");
+//    }
+
     public function store(Request $request)
     {
-        $id = Auth::user()->id;
-
+        $user = Auth::user();
         $input = $request->all();
         $this->validator($input)->validate();
-        $input['id_prof'] = $id;
 
-        Ad::create($input);
+        $input['id_prof'] = $user->id;
+        if($input['students'] == 0){
+            $input['students'] = null;
+        }
 
-//        $request->session()->flash('message', 'You successfully added new topic!!');
+        if($input['old_ad'])
+        {
+            $ad = Ad::find($input['old_ad']);
+
+            $ad->id_prof=$user->id;
+            $ad->title = $input['title'];
+            $ad->description = $input['description'];
+            $ad->id_student = $input['students'];
+            $ad->finish_date = $input['finish_date'];
+            $ad->save();
+        }
+
+
+        else
+        {
+            Ad::create($input);
+        }
+
 
         return redirect("prof_ads");
     }
 
     public function edit($id)
     {
-        $ad = Ad::find($id);
+        $old_ad = Ad::find($id);
 
-        return view('prof.edit_ad', compact('ad'));
+        return view('prof.create_ad', compact('old_ad'));
     }
 
     public function delete($id)

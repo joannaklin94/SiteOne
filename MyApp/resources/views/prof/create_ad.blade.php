@@ -14,13 +14,23 @@
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="post" action="{{ url('/prof_ads') }}">
                             {{ csrf_field() }}
-                            <fieldset>
+
+                            @if(isset($old_ad))
+                                <input id="old_ad" type="hidden" name="old_ad" value="{{$old_ad->id }}">
+                            @else
+                                <input id="old_ad" type="hidden" name="old_ad" value="0">
+                            @endif
+
                                 <legend>Tell your students about any news or changes </legend>
 
                                 <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                                     <label for="title" class="col-md-4 control-label">Title</label>
                                     <div class="col-md-6">
-                                        <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}"autofocus>
+                                        @if(isset($old_ad))
+                                            <input id="title" type="text" class="form-control" name="title" value="{{ old('title')?: $old_ad->title }}"autofocus>
+                                        @else
+                                            <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}"autofocus>
+                                        @endif
                                         @if ($errors->has('title'))
                                             <span class="help-block">
                                              <strong>{{ $errors->first('title') }}</strong>
@@ -32,7 +42,11 @@
                                 <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                                     <label for="description" class="col-md-4 control-label">Description </label>
                                     <div class="col-md-6">
-                                        <textarea rows="5" cols="50" class="form-control" id="description" name="description" value="{{ old('description') }}">Specify the topic...</textarea>
+                                        @if(isset($old_ad))
+                                            <textarea rows="5" cols="50" class="form-control" id="description" name="description">{{ old('description') ?: $old_ad->description}}</textarea>
+                                        @else
+                                            <textarea rows="5" cols="50" class="form-control" id="description" name="description">{{ old('description')}}</textarea>
+                                        @endif
                                         @if ($errors->has('description'))
                                             <span class="help-block">
                                              <strong>{{ $errors->first('description') }}</strong>
@@ -44,7 +58,11 @@
                                 <div class="form-group">
                                     <label for="finish_date" class="col-md-4 control-label">When your ad will expire?</label>
                                     <div class="col-md-6">
-                                        <input id="finish_date" type="date" class="form-control" name="finish_date" value="{{ old('finish_date') }}"autofocus>
+                                        @if(isset($old_ad))
+                                            <input id="finish_date" type="date" class="form-control" name="finish_date" value="{{ old('finish_date')?: $old_ad->finish_date }}"autofocus>
+                                        @else
+                                            <input id="finish_date" type="date" class="form-control" name="finish_date" value="{{ old('finish_date') }}"autofocus>
+                                        @endif
                                     </div>
                                 </div>
 
@@ -58,17 +76,11 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
                                     <div class="form-group{{ $errors->has('students') ? ' has-error' : '' }}">
                                         <label for="students" class="col-md-4 control-label">Chose students</label>
                                         <div class="col-md-6">
-{{--                                            @if(isset($students))--}}
                                             <select id="students" class="form-control" name="students">
-{{--                                                @foreach ($students as $student)--}}
-                                                {{--<option value="{{$student->id}}">{{$student->name}} {{$student->surname}}</option>--}}
-                                                {{--@endforeach--}}
                                             </select>
-                                            {{--@endif--}}
                                             @if ($errors->has('students'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('students') }}</strong>
@@ -76,8 +88,6 @@
                                             @endif
                                         </div>
                                     </div>
-
-                            </fieldset>
 
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
@@ -94,31 +104,29 @@
                         <script type="text/javascript">
                             $('#to_who').on('change', function (e)
                             {
-                                console.log(e);
                                 var  to_who =  e.target.value;
                                 console.log(to_who);
 
-                                if( e.target.value = 'chosen')
+                                if( to_who == 'chosen')
                                 {
                                     //ajax
                                     $.get('/prof_ads/create/ajax-students?to_who=' + to_who, function(data)
                                     {
+
                                         console.log(data);
                                         $('#students').empty();
                                         $.each(data, function(index,studentObj){
-                                            $('#students').append('<option value="'+studentObj.id+'">' + studentObj.name + studentObj.surname + '</option>');
+                                            $('#students').append('<option value="'+studentObj.id+'">' + studentObj.name + ' ' + studentObj.surname + '</option>');
                                         });
                                     });
                                 }
 
                                 else{
                                     console.log('o');
-                                }
+                                    $('#students').empty();
+                                    $('#students').append('<option value="0">' + 'all students' + '</option>');
 
-//                                else
-//                                {
-//                                    $('#students').empty();
-//                                }
+                                }
                             });
                         </script>
 

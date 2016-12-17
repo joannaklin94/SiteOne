@@ -62,7 +62,6 @@
                                             <td>{{$file->name}} {{$file->surname}}</td>
                                             <td>{{$file->created_at}}</td>
                                             <td>
-                                                {{--<a href="{{ action('ProfstudentsController@delete', [ $file->id] ) }}" ><button type="button" id="delete" class="btn btn-danger btn-sm">Delete</button></a>--}}
                                                 <a href="#" data-id="{{$file->id}}" class="delete"><button type="button" id="delete" class="btn btn-danger btn-sm">Delete</button></a>
                                             </td>
                                         </tr>
@@ -71,7 +70,12 @@
                                 @endif
 
 
-                        <script>
+                        <script type="text/javascript">
+
+{{--                            var contents = atob("{{ base64_encode($contents) }}");--}}
+                            {{--$("#files > tbody").append('<tr><td></td>' + atob("{{ $id }}") + '<td></td><td></td><td></td><tr>');--}}
+
+
                             var form = document.getElementById('uploadForm');
                             var request = new XMLHttpRequest();
 
@@ -79,20 +83,28 @@
                                 e.preventDefault();
                                 var formData = new FormData(form);
 
-
                                 request.open('post', '/prof_students/workspace');
-                                request.addEventListener('load',transferComplete)
+                                request.addEventListener('load', transferComplete)
                                 request.send(formData);
                                 $('#description').val("");
                                 document.getElementById('message').innerHTML = 'Successfully added files';
                                 var id = 8;
 
-//                                $.get('/profile1e/ajax-institute?faculty_id=' + id, function(data)
-                                $.get('/prof_students/student/view_uploads?id=' + id, function(data)
-//                                $.get('/prof_students/workspace/last_file?id=' + id, function(data)
-                                {
+                                $.get('/prof_students/student/view_uploads?id=' + id, function(data) {
+
                                     console.log(data);
-                                    document.getElementById('message').innerHTML = 'bla';
+//                                    var first =
+                                    {{--var contents = atob("{{ base64_encode($contents) }}");--}}
+                                    {{--$("#files > tbody").append('<tr><td></td>' + contents + '<td></td><td></td><td></td><tr>');--}}
+
+                                    $("#files > tbody").append('<tr id="' + data.id +   '">' +
+                                            {{--'<td>' + '<a href="' + 'action("ProfstudentsController@download", [' + data.file_name + ']) }}">' + data.original_name + '</a> <br>' + data.original_name + '</td>' +--}}
+                                            '<td>' + data.original_name + '<br>' + data.description + '</td>' +
+                                            '<td>' + data.name + ' ' + data.surname + '</td>' +
+                                            '<td>' + data.created_at + '</td>' +
+                                            '<td>' +  '<a href="#" data-id="' + data.id + '" class="delete"><button type="button" id="delete" class="btn btn-danger btn-sm">Delete</button></a>' +
+                                            '</td>' +
+                                            '</tr>');
 
 
                                 });
@@ -102,22 +114,7 @@
 
                             function transferComplete(data) {
 //                                console.log(data.currentTarget.response);
-//                                var file = data.currentTarget.response;
-//                                console.log('------------------');
-
-//                                console.log(file);
-
-//                                var parsedJson = $.parseJSON(jsonToBeParsed);
-
                                 document.getElementById('message').innerHTML = '';
-
-//                                $.each(data, function(index,file){
-//                                    $("#files > tbody").append('<tr id="' + file.student_id +   '"><td>' + file.description + '</td><td>1</td><td>1</td><td>1</td></tr>');
-//
-//                                });
-
-
-
                             }
                         </script>
 
@@ -140,41 +137,7 @@
                             });
                         </script>
 
-                        {{--<script>--}}
-                            {{--var form = document.getElementById('uploadForm');--}}
-                            {{--var request = new XMLHttpRequest();--}}
 
-                            {{--form.addEventListener('submit', function (e) {--}}
-                              {{--e.preventDefault();--}}
-                                {{--var formData = new FormData(form);--}}
-
-                                {{--request.open('post', '/prof_students/workspace');--}}
-                                {{--request.addEventListener('load',transferComplete)--}}
-                                {{--request.send(formData);--}}
-                                {{--$('#description').val("");--}}
-                                {{--document.getElementById('message').innerHTML = 'Successfully added files';--}}
-                            {{--});--}}
-
-                            {{--function transferComplete(data) {--}}
-{{--//                                console.log(data.currentTarget.response);--}}
-                                {{--var file = data.currentTarget.response;--}}
-                                {{--console.log('------------------');--}}
-
-                                {{--console.log(file);--}}
-
-                                {{--var parsedJson = $.parseJSON(jsonToBeParsed);--}}
-
-                                {{--document.getElementById('message').innerHTML = '';--}}
-
-{{--//                                $.each(data, function(index,file){--}}
-{{--//                                    $("#files > tbody").append('<tr id="' + file.student_id +   '"><td>' + file.description + '</td><td>1</td><td>1</td><td>1</td></tr>');--}}
-{{--//--}}
-{{--//                                });--}}
-
-
-
-                            {{--}--}}
-                        {{--</script>--}}
 
 
                         <br>

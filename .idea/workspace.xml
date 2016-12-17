@@ -2,93 +2,68 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff8ba049-ef24-4afa-92d5-0b0fe17ab041" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MyApp/app/Http/Controllers/Student_workspaceController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MyApp/resources/views/prof/chose_students.blade.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/app/Studentstopic.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/database/migrations/2016_11_05_222512_create_studentstopics_table.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/database/migrations/2016_11_13_152343_change_column_name_in_theses_table.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/database/seeds/StudentstopicTableSeeder.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/1477942839.JPG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/1477954551.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/1478009338.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/1478019291.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/1478019534.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/1478102151.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/1478123305.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/1478299334.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/1478382689.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/1478720794.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/1478952183.JPG" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/1478953168.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/1478953183.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/resources/views/my_layouts/after_login.blade.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/resources/views/my_layouts/before_login.blade.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/resources/views/my_layouts/layout.blade.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/resources/views/prof/edit_topic.blade.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/resources/views/prof/workspace.blade.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/resources/views/student/edit_topic.blade.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/MyApp/database/migrations/2016_11_23_132639_create_specialisations_table.php" afterPath="$PROJECT_DIR$/MyApp/database/migrations/2016_10_08_134439_create_specialisations_table.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/MyApp/database/migrations/2016_11_23_132724_create_roles_table.php" afterPath="$PROJECT_DIR$/MyApp/database/migrations/2014_10_11_132724_create_roles_table.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/MyApp/database/migrations/2016_11_23_132757_create_institutions_table.php" afterPath="$PROJECT_DIR$/MyApp/database/migrations/2016_10_08_132757_create_institutions_table.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/MyApp/database/migrations/2016_11_23_132948_create_faculties_table.php" afterPath="$PROJECT_DIR$/MyApp/database/migrations/2016_10_07_132948_create_faculties_table.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1480812466.console.rar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1480813243.plik1.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1480813277.asia.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1480813377.plik1.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1480813602.DMCS6.odt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1480813662.kolorowe-drzewo.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1480813799.kolorowe-drzewo.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1480813821.14022336_10154061109919864_7175944003232562099_n.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1480813860.gory1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1480813896.kolorowe-drzewo.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1480813956.kolorowe-drzewo.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1480814054.kolorowe-drzewo.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1480814069.33031_plakat.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1480814096.13765837_1101669033220473_2221261085812094008_o.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1480974498.transactionsIDs.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1480974670.transactionsIDs.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1480974682.DMCS6.odt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1480974729.DMCS6.odt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1480974750.DMCS6.odt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481382370.transactionsIDs.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481382441.transactionsIDs.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481382496.SILY.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481382575.transactionsIDs.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481382626.zadania-powtƈrzeniowe-z-fizyki-klasa-3.doc.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481382665.SILY.odt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481391376.SILY.odt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481391446.sily_rownowazace_sie_sila_53847.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481391471.SILY.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481391594.transactionsIDs.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481391854.SILY.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481392104.transactionsIDs.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481392204.transactionsIDs.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481392475.zadania-powtƈrzeniowe-z-fizyki-klasa-3.doc.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481392566.transactionsIDs.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481392589.Ig-sily-test.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481392855.transactionsIDs.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481392939.transactionsIDs.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481393043.13913849_1042839145785166_1298378812085520568_o.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481393086.13689551_1023153361104124_544777710_n.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481393751.13938157_1042839109118503_8822229166247780329_o.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481393806.546634_237186316403776_1660768409_n.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481393936.546634_237186316403776_1660768409_n.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481394032.14925429_765945046880065_2988929254675612558_n.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481394799.asia.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481394852.asia.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481394956.asia.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481487021.thesis_topic_assignment.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481487049.checked_code.rar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481487090.gory1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481903269.checked_code.rar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481903967.checked_code.rar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481904151.checked_code.rar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481904661.checked_code.rar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481904753.checked_code.rar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyApp/public/uploads/workspace_files/1481905008.checked_code.rar" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/app/Ad.php" afterPath="$PROJECT_DIR$/MyApp/app/Ad.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/app/Http/Controllers/Auth/RegisterController.php" afterPath="$PROJECT_DIR$/MyApp/app/Http/Controllers/Auth/RegisterController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/app/Http/Controllers/Home2Controller.php" afterPath="$PROJECT_DIR$/MyApp/app/Http/Controllers/Home2Controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/app/Http/Controllers/HomeController.php" afterPath="$PROJECT_DIR$/MyApp/app/Http/Controllers/HomeController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/app/Http/Controllers/Prof_adsController.php" afterPath="$PROJECT_DIR$/MyApp/app/Http/Controllers/Prof_adsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/app/Http/Controllers/Prof_topicsController.php" afterPath="$PROJECT_DIR$/MyApp/app/Http/Controllers/Prof_topicsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/app/Http/Controllers/Profile1Controller.php" afterPath="$PROJECT_DIR$/MyApp/app/Http/Controllers/Profile1Controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/app/Http/Controllers/Profile2Controller.php" afterPath="$PROJECT_DIR$/MyApp/app/Http/Controllers/Profile2Controller.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/app/Http/Controllers/ProfstudentsController.php" afterPath="$PROJECT_DIR$/MyApp/app/Http/Controllers/ProfstudentsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/app/Http/Controllers/Student_topicController.php" afterPath="$PROJECT_DIR$/MyApp/app/Http/Controllers/Student_topicController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/app/Http/Controllers/TopicsController.php" afterPath="$PROJECT_DIR$/MyApp/app/Http/Controllers/TopicsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/app/Http/Middleware/AdminMiddleware.php" afterPath="$PROJECT_DIR$/MyApp/app/Http/Middleware/AdminMiddleware.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/app/Http/Middleware/ProfMiddleware.php" afterPath="$PROJECT_DIR$/MyApp/app/Http/Middleware/ProfMiddleware.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/app/Http/Middleware/StudentMiddleware.php" afterPath="$PROJECT_DIR$/MyApp/app/Http/Middleware/StudentMiddleware.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/app/Professor.php" afterPath="$PROJECT_DIR$/MyApp/app/Professor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/app/Student.php" afterPath="$PROJECT_DIR$/MyApp/app/Student.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/app/Thesis.php" afterPath="$PROJECT_DIR$/MyApp/app/Thesis.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/app/UploadedFile.php" afterPath="$PROJECT_DIR$/MyApp/app/UploadedFile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/app/User.php" afterPath="$PROJECT_DIR$/MyApp/app/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/database/migrations/2014_10_12_000000_create_users_table.php" afterPath="$PROJECT_DIR$/MyApp/database/migrations/2014_10_12_000000_create_users_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/database/migrations/2016_10_08_190642_create_students_table.php" afterPath="$PROJECT_DIR$/MyApp/database/migrations/2016_10_08_190642_create_students_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/database/migrations/2016_11_02_210712_create_professors_table.php" afterPath="$PROJECT_DIR$/MyApp/database/migrations/2016_11_02_210712_create_professors_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/database/migrations/2016_11_03_193104_create_theses_table.php" afterPath="$PROJECT_DIR$/MyApp/database/migrations/2016_11_03_193104_create_theses_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/database/migrations/2016_11_05_124023_create_ads_table.php" afterPath="$PROJECT_DIR$/MyApp/database/migrations/2016_11_05_124023_create_ads_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/database/migrations/2016_11_21_212309_create_users_comments_table.php" afterPath="$PROJECT_DIR$/MyApp/database/migrations/2016_11_21_212309_create_users_comments_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/database/migrations/2016_11_22_111824_create_upload_files_table.php" afterPath="$PROJECT_DIR$/MyApp/database/migrations/2016_11_22_111824_create_upload_files_table.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/database/seeds/AdsTableSeeder.php" afterPath="$PROJECT_DIR$/MyApp/database/seeds/AdsTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/database/seeds/CommentsTableSeeder.php" afterPath="$PROJECT_DIR$/MyApp/database/seeds/CommentsTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/database/seeds/DatabaseSeeder.php" afterPath="$PROJECT_DIR$/MyApp/database/seeds/DatabaseSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/database/seeds/FacultiesTableSeeder.php" afterPath="$PROJECT_DIR$/MyApp/database/seeds/FacultiesTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/database/seeds/InstitutionsTableSeeder.php" afterPath="$PROJECT_DIR$/MyApp/database/seeds/InstitutionsTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/database/seeds/ProfessorsTableSeeder.php" afterPath="$PROJECT_DIR$/MyApp/database/seeds/ProfessorsTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/database/seeds/RolesTableSeeder.php" afterPath="$PROJECT_DIR$/MyApp/database/seeds/RolesTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/database/seeds/SpecialisationsTableSeeder.php" afterPath="$PROJECT_DIR$/MyApp/database/seeds/SpecialisationsTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/database/seeds/StudentsTableSeeder.php" afterPath="$PROJECT_DIR$/MyApp/database/seeds/StudentsTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/database/seeds/ThesesTableSeeder.php" afterPath="$PROJECT_DIR$/MyApp/database/seeds/ThesesTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/database/seeds/UsersTableSeeder.php" afterPath="$PROJECT_DIR$/MyApp/database/seeds/UsersTableSeeder.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/auth/register.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/auth/register.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/before_auth/topic.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/before_auth/topic.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/before_auth/topics.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/before_auth/topics.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/layouts/prof.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/layouts/prof.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/layouts/student.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/layouts/student.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/prof/create_ad.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/prof/create_ad.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/prof/create_topic.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/prof/create_topic.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/prof/edit_profile.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/prof/edit_profile.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/prof/prof_students.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/prof/prof_students.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/prof/prof_topics.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/prof/prof_topics.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/prof/profile.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/prof/profile.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/prof/student.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/prof/student.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/prof/student_workspace.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/prof/student_workspace.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/prof/topic.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/prof/topic.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/student/edit_profile.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/student/edit_profile.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/student/home.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/student/home.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/student/profile.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/student/profile.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/student/student_prof.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/student/student_prof.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/student/topic.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/student/topic.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/resources/views/student/workspace.blade.php" afterPath="$PROJECT_DIR$/MyApp/resources/views/student/workspace.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MyApp/routes/web.php" afterPath="$PROJECT_DIR$/MyApp/routes/web.php" />
     </list>
     <ignored path="SiteOne.iws" />
@@ -110,21 +85,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="web.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="59" column="70" selection-start-line="59" selection-start-column="70" selection-end-line="59" selection-end-column="70" />
+            <state relative-caret-position="161">
+              <caret line="55" column="92" selection-start-line="55" selection-start-column="92" selection-end-line="55" selection-end-column="92" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProfstudentsController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ProfstudentsController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MyApp/app/Http/Controllers/ProfstudentsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="221" column="29" selection-start-line="221" selection-start-column="25" selection-end-line="221" selection-end-column="29" />
+            <state relative-caret-position="352">
+              <caret line="235" column="18" selection-start-line="234" selection-start-column="18" selection-end-line="235" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -133,13 +108,19 @@
       <file leaf-file-name="student_workspace.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MyApp/resources/views/prof/student_workspace.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="90" column="62" selection-start-line="90" selection-start-column="62" selection-end-line="90" selection-end-column="62" />
-              <folding>
-                <marker date="1481906017543" expanded="true" signature="7198:7820" ph="..." />
-                <marker date="1481906017543" expanded="true" signature="7226:7815" ph="..." />
-                <marker date="1481906017543" expanded="true" signature="7897:8723" ph="..." />
-              </folding>
+            <state relative-caret-position="491">
+              <caret line="115" column="75" selection-start-line="115" selection-start-column="75" selection-end-line="115" selection-end-column="75" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chose_students.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/MyApp/resources/views/prof/chose_students.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="116">
+              <caret line="79" column="32" selection-start-line="79" selection-start-column="32" selection-end-line="79" selection-end-column="55" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -164,14 +145,12 @@
         <option value="$PROJECT_DIR$/MyApp/resources/views/before_auth/topics.blade.php" />
         <option value="$PROJECT_DIR$/MyApp/resources/views/layouts/prof.blade.php" />
         <option value="$PROJECT_DIR$/MyApp/resources/views/prof/profile.blade.php" />
-        <option value="$PROJECT_DIR$/MyApp/resources/views/prof/prof_topics.blade.php" />
         <option value="$PROJECT_DIR$/MyApp/app/Professor.php" />
         <option value="$PROJECT_DIR$/MyApp/app/Thesis.php" />
         <option value="$PROJECT_DIR$/MyApp/resources/views/prof/edit_profile.blade.php" />
         <option value="$PROJECT_DIR$/MyApp/app/Http/Controllers/Profile1Controller.php" />
         <option value="$PROJECT_DIR$/MyApp/database/migrations/2016_12_01_120613_change_column_name_in_specialisations_table.php" />
         <option value="$PROJECT_DIR$/MyApp/app/Student.php" />
-        <option value="$PROJECT_DIR$/MyApp/resources/views/prof/chose_students.blade.php" />
         <option value="$PROJECT_DIR$/MyApp/resources/views/prof/student.blade.php" />
         <option value="$PROJECT_DIR$/MyApp/resources/views/prof/prof_students.blade.php" />
         <option value="$PROJECT_DIR$/MyApp/resources/views/student/topic.blade.php" />
@@ -189,20 +168,22 @@
         <option value="$PROJECT_DIR$/MyApp/resources/views/auth/register.blade.php" />
         <option value="$PROJECT_DIR$/MyApp/resources/views/student/profile.blade.php" />
         <option value="$PROJECT_DIR$/MyApp/app/Http/Controllers/Prof_topicsController.php" />
-        <option value="$PROJECT_DIR$/MyApp/app/Ad.php" />
         <option value="$PROJECT_DIR$/MyApp/resources/views/student/home.blade.php" />
         <option value="$PROJECT_DIR$/MyApp/app/Http/Controllers/Home2Controller.php" />
-        <option value="$PROJECT_DIR$/MyApp/resources/views/prof/create_ad.blade.php" />
-        <option value="$PROJECT_DIR$/MyApp/app/Http/Controllers/Prof_adsController.php" />
         <option value="$PROJECT_DIR$/MyApp/database/seeds/CommentsTableSeeder.php" />
         <option value="$PROJECT_DIR$/MyApp/database/seeds/DatabaseSeeder.php" />
         <option value="$PROJECT_DIR$/MyApp/app/Http/Controllers/Student_workspaceController.php" />
         <option value="$PROJECT_DIR$/MyApp/resources/views/student/workspace.blade.php" />
-        <option value="$PROJECT_DIR$/MyApp/app/Http/Controllers/ProfstudentsController.php" />
-        <option value="$PROJECT_DIR$/MyApp/resources/views/prof/student_workspace.blade.php" />
-        <option value="$PROJECT_DIR$/MyApp/routes/web.php" />
         <option value="$PROJECT_DIR$/MyApp/resources/views/prof/create_topic.blade.php" />
         <option value="$PROJECT_DIR$/MyApp/resources/views/prof/topic.blade.php" />
+        <option value="$PROJECT_DIR$/MyApp/resources/views/prof/prof_topics.blade.php" />
+        <option value="$PROJECT_DIR$/MyApp/app/Ad.php" />
+        <option value="$PROJECT_DIR$/MyApp/resources/views/prof/create_ad.blade.php" />
+        <option value="$PROJECT_DIR$/MyApp/app/Http/Controllers/Prof_adsController.php" />
+        <option value="$PROJECT_DIR$/MyApp/resources/views/prof/chose_students.blade.php" />
+        <option value="$PROJECT_DIR$/MyApp/routes/web.php" />
+        <option value="$PROJECT_DIR$/MyApp/resources/views/prof/student_workspace.blade.php" />
+        <option value="$PROJECT_DIR$/MyApp/app/Http/Controllers/ProfstudentsController.php" />
       </list>
     </option>
   </component>
@@ -247,6 +228,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -289,32 +271,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SiteOne" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SiteOne" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyApp" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="student" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -394,28 +350,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="seeds" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SiteOne" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SiteOne" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MyApp" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -470,7 +404,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -610,17 +543,18 @@
       <workItem from="1481902556631" duration="4659000" />
       <workItem from="1481929377457" duration="1223000" />
       <workItem from="1481976506440" duration="2004000" />
+      <workItem from="1481980553101" duration="14352000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="563888000" />
+    <option name="totallyTimeSpent" value="578240000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2526475" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18154311" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12091503" sideWeight="0.5060514" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -678,31 +612,11 @@
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="8" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/MyApp/resources/views/layouts/prof.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp/app/Thesis.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp/public/uploads/1477942839.JPG" />
-    <entry file="file://$PROJECT_DIR$/MyApp/public/uploads/1480273891.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MyApp/public/uploads/1480682478.JPG">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -826,13 +740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp/app/Ad.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MyApp/resources/views/student/profile.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -878,24 +785,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp/app/Http/Controllers/Prof_adsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MyApp/app/Http/Controllers/StudentsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="15" column="35" selection-start-line="0" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp/app/Http/Controllers/Student_topicController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="170" column="7" selection-start-line="170" selection-start-column="7" selection-end-line="173" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -939,23 +832,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="118" column="39" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp/resources/views/prof/create_topic.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="147" column="137" selection-start-line="147" selection-start-column="137" selection-end-line="147" selection-end-column="137" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp/app/Http/Controllers/ProfstudentsController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="221" column="29" selection-start-line="221" selection-start-column="25" selection-end-line="221" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -963,27 +839,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="16" column="52" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp/app/Http/Controllers/Prof_topicsController.php">
+    <entry file="file://$PROJECT_DIR$/MyApp/resources/views/prof/prof_topics.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="117" column="24" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="24" />
+        <state relative-caret-position="187">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp/routes/web.php">
+    <entry file="file://$PROJECT_DIR$/MyApp/app/Http/Controllers/Student_topicController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="59" column="70" selection-start-line="59" selection-start-column="70" selection-end-line="59" selection-end-column="70" />
+        <state relative-caret-position="330">
+          <caret line="83" column="9" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyApp/resources/views/prof/create_ad.blade.php">
+    <entry file="file://$PROJECT_DIR$/MyApp/resources/views/prof/create_topic.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="23" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp/app/Comment.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -991,15 +874,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp/app/Ad.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="71" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp/app/Http/Controllers/Prof_topicsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="87" column="45" selection-start-line="87" selection-start-column="45" selection-end-line="87" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp/resources/views/prof/create_ad.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="118" column="125" selection-start-line="118" selection-start-column="125" selection-end-line="118" selection-end-column="125" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp/app/Http/Controllers/Prof_adsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp/resources/views/prof/prof_students.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-730">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp/resources/views/prof/chose_students.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="79" column="32" selection-start-line="79" selection-start-column="32" selection-end-line="79" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="55" column="92" selection-start-line="55" selection-start-column="92" selection-end-line="55" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MyApp/resources/views/prof/student_workspace.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="90" column="62" selection-start-line="90" selection-start-column="62" selection-end-line="90" selection-end-column="62" />
-          <folding>
-            <marker date="1481906017543" expanded="true" signature="7198:7820" ph="..." />
-            <marker date="1481906017543" expanded="true" signature="7226:7815" ph="..." />
-            <marker date="1481906017543" expanded="true" signature="7897:8723" ph="..." />
-          </folding>
+        <state relative-caret-position="491">
+          <caret line="115" column="75" selection-start-line="115" selection-start-column="75" selection-end-line="115" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MyApp/app/Http/Controllers/ProfstudentsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="235" column="18" selection-start-line="234" selection-start-column="18" selection-end-line="235" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>

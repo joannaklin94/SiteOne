@@ -10,7 +10,6 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
 
-
                         <div>
                             <ul class="list-unstyled">
                                 <li><h3 style="color:cornflowerblue;">Your thesis propositions</h3></li>

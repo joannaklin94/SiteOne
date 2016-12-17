@@ -50,9 +50,26 @@ Route::group(['middleware' => 'prof', 'auth'], function () {
     Route::get('/home1', function () {
         return view('/prof.home'); });
 
+
+
     Route::get('/prof_students','ProfstudentsController@index');
+    Route::get('/prof_students/student/view_uploads','ProfstudentsController@view_uploads');
     Route::get('/prof_students/workspace/{id}','ProfstudentsController@show_workspace');
     Route::get('/prof_students/student/{id}','ProfstudentsController@show_student');
+    Route::get('/prof_students/chose_student','ProfstudentsController@chose_student');
+    Route::get('/prof_students/new_student/ajax-students','ProfstudentsController@ajax');
+    Route::post('/prof_students/new_student','ProfstudentsController@store');
+    Route::get('/prof_students/student/workspace/delete','ProfstudentsController@delete_ajax');
+    Route::post('/prof_students/workspace','ProfstudentsController@upload');
+
+
+    Route::get('/prof_students/new_student','ProfstudentsController@file_ajax');
+    Route::get('/prof_students/new_student/{file}','ProfstudentsController@download');
+//    Route::get('/prof_students/new_student','ProfstudentsController@download');
+
+
+
+
 
     Route::get('/prof_topics','Prof_topicsController@index');
     Route::get('/prof_topics/create','Prof_topicsController@create');
@@ -65,6 +82,7 @@ Route::group(['middleware' => 'prof', 'auth'], function () {
 
     Route::get('/prof_ads','Prof_adsController@index');
     Route::get('/prof_ads/create','Prof_adsController@create');
+    Route::get('/prof_ads/create/ajax-students','Prof_adsController@ajax');
     Route::get('/prof_ads/edit/{id}','Prof_adsController@edit');
     Route::get('/prof_ads/delete/{id}','Prof_adsController@delete');
     Route::post('/prof_ads','Prof_adsController@store');

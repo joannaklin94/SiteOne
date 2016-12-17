@@ -131,139 +131,6 @@ class ProfstudentsController extends Controller
         return redirect("/prof_students");
     }
 
-    public function show_workspace($id)
-    {
-
-
-//        $topic = Thesis::findOrFail($id);
-//        $specialisations_array = explode( ';', $topic->specialisations );
-//        $student = User::findOrFail($id);
-        $prof = Auth::user();
-
-        $comments = DB::table('comments')
-            ->join('users', 'comments.user_id', 'users.id')
-//            ->select('users.name', 'users.surname','users.avatar','comments.message', 'comments.created_at')
-            ->where('comments.user_id', '=',$prof->id)
-            ->where('comments.id_student', '=',$id)
-            ->orWhere('comments.user_id', '=',$id)
-//            ->latest()
-            ->get();
-
-        $files = DB::table('files')
-            ->join('users', 'users.id', 'files.user_id')
-            ->where('user_id', Auth::user()->id)
-            ->where('student_id', '=',$id)
-            ->orWhere('user_id', $id)
-            ->select('users.name', 'users.surname', 'files.*')
-            ->latest()
-            ->get();
-
-
-//        return dd($files);
-
-        return view('prof.student_workspace',compact('comments','id', 'files'));
-    }
-
-    public function upload(Request $request)
-    {
-//        print_r($request->all());
-//        $file = $request->file('file');
-//
-//        if(!empty($file))
-//        {
-//            $original_name = $file->getClientOriginalName();
-//            $filename = time() . '.' . $file->getClientOriginalName();
-//            $file ->move('uploads/workspace_files',$filename);
-////            $file ->move('../storage/workspace_files',$filename);
-//
-//
-//            UploadedFile::create([
-//                'file_name' => $filename,
-//                'original_name' => $original_name,
-//                'description' => $request['description'],
-//                'student_id' => $request['student_id'],
-//                'user_id' => Auth::user()->id
-//            ]);
-
-//            $file =  UploadedFile::where('file_name', $filename)
-//                ->first();
-
-            $faculty_id = Input::get('faculty_id');
-
-            $faculties = DB::table('institutes')
-                ->select('name_pol', 'institute_id')
-                ->where('faculty_id', $faculty_id)
-                ->get();
-
-            return response()->json($faculties);
-
-        }
-
-//        return response()->json($file);
-
-//    }
-
-    public function view_uploads()
-    {
-        $id = Input::get('id');
-
-        $files = DB::table('files')
-            ->join('users', 'users.id', 'files.user_id')
-            ->where('user_id', Auth::user()->id)
-            ->where('student_id', '=',$id)
-            ->orWhere('user_id', Auth::user()->id)
-            ->latest()
-            ->get();
-
-        return response()->json($files);
-
-    }
-
-    public function file_ajax()
-    {
-
-        $file =  UploadedFile::latest()
-            ->first();
-
-        return response()->json($file);
-
-    }
-
-
-
-    public function download($file_name)
-    {
-        $path = '../public/uploads/workspace_files/' . $file_name;
-        $file_path = storage_path($path);
-
-        return response()->download($file_path);
-    }
-
-    public function delete_ajax ()
-    {
-//        $path = '../public/uploads/workspace_files/' . $file_name;
-//                $path = 'workspace_files/' . $file_name;
-//        $path = 'public/uploads/workspace_files/' . $file_name;
-
-
-//        $file_path = storage_path($path);
-//        Storage::delete($file_path);
-
-        $id = Input::get('id');
-
-        UploadedFile::where('id', $id)->delete();
-//        $file_path = storage_path($path);
-
-//        Storage::delete($file_path);
-
-
-//        File::Delete($file_path);
-
-
-//        return redirect("/prof_students/workspace/{id}");
-        return response()->json($id);
-    }
-
     public function show_student($id)
     {
         $student= DB::table('students')
@@ -277,6 +144,116 @@ class ProfstudentsController extends Controller
         return view('prof.student', compact('student'));
     }
 
+    public function show_workspace($id)
+    {
+        $prof = Auth::user();
+
+        $comments = DB::table('comments')
+            ->join('users', 'comments.user_id', 'users.id')
+//            ->select('users.name', 'users.surname','users.avatar','comments.message', 'comments.created_at')
+            ->where('comments.user_id', '=',$prof->id)
+            ->where('comments.id_student', '=',$id)
+            ->orWhere('comments.user_id', '=',$id)
+            ->get();
+
+        $files = DB::table('files')
+            ->join('users', 'users.id', 'files.user_id')
+            ->where('user_id', Auth::user()->id)
+            ->where('student_id', '=',$id)
+            ->orWhere('user_id', $id)
+            ->select('users.name', 'users.surname', 'files.*')
+            ->latest()
+            ->get();
+
+        return view('prof.student_workspace',compact('comments','id', 'files'));
+    }
+
+    public function download($file_name)
+    {
+        $path = '../public/uploads/workspace_files/' . $file_name;
+        $file_path = storage_path($path);
+
+        return response()->download($file_path);
+    }
+
+    public function delete_ajax ()
+    {
+//        $path = 'public/uploads/workspace_files/' . $file_name;
+//        $file_path = storage_path($path);
+        //        Storage::delete($file_path);
+//        File::Delete($file_path);
+
+        $id = Input::get('id');
+        UploadedFile::where('id', $id)->delete();
+
+        return response()->json($id);
+    }
+
+    public function upload(Request $request)
+    {
+//        print_r($request->all());
+        $file = $request->file('file');
+
+        if(!empty($file))
+        {
+            $original_name = $file->getClientOriginalName();
+            $filename = time() . '.' . $file->getClientOriginalName();
+            $file ->move('uploads/workspace_files',$filename);
+//            $file ->move('../storage/workspace_files',$filename);
+
+
+            UploadedFile::create([
+                'file_name' => $filename,
+                'original_name' => $original_name,
+                'description' => $request['description'],
+                'student_id' => $request['student_id'],
+                'user_id' => Auth::user()->id
+            ]);
+
+//            $file =  UploadedFile::where('file_name', $filename)
+//                ->first();
+
+//            $faculty_id = Input::get('faculty_id');
+//
+//            $faculties = DB::table('institutes')
+//                ->select('name_pol', 'institute_id')
+//                ->where('faculty_id', $faculty_id)
+//                ->get();
+//
+//            return response()->json($faculties);
+
+        }
+
+//        return response()->json($file);
+
+    }
+
+    public function view_uploads()
+    {
+        $id = Input::get('id');
+
+        $files =  UploadedFile:://where('file_name', $filename)
+                latest()->first();
+
+//        $files = DB::table('files')
+//            ->select('files.id', 'files.original_name')
+//            ->join('users', 'users.id', 'files.user_id')
+//            ->where('user_id', Auth::user()->id)
+//            ->where('student_id', $id)
+//            ->orWhere('user_id', $id)
+//            ->get();
+
+        return response()->json($files);
+    }
+
+    public function file_ajax()
+    {
+        $file =  UploadedFile::latest()
+            ->first();
+
+        return response()->json($file);
+
+    }
 
 }
 
