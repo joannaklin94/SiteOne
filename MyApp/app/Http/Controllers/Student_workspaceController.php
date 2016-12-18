@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Comment;
 use Illuminate\Http\Request;
 use App\Student;
+use App\UploadedFile;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,8 @@ class Student_workspaceController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $files = array();
+        $comments = array();
 
         $prof = DB::table('students')
             ->join('theses', 'theses.id', 'students.thesis_id')
@@ -33,10 +36,20 @@ class Student_workspaceController extends Controller
                 ->OrWhere('user_id', $prof->id_prof)
                 ->Where('id_student', $user->id)
                 ->select('users.name', 'users.surname', 'users.avatar', 'comments.message', 'comments.created_at')
+                ->orderBy('comments.created_at', 'asc')
+                ->get();
+
+            $files = DB::table('files')
+                ->join('users', 'users.id', 'files.user_id')
+                ->where('user_id', Auth::user()->id)
+                ->orWhere('user_id', $prof->id_prof)
+                ->where('student_id', Auth::user()->id)
+                ->select('users.name', 'users.surname', 'files.*')
+                ->orderBy('files.created_at', 'asc')
                 ->get();
         }
 
-        return view('/student.workspace', compact('comments'));
+        return view('/student.workspace', compact('comments', 'files'));
     }
 
     public function create_comment ()
@@ -57,6 +70,26 @@ class Student_workspaceController extends Controller
             ->first();
 
         return response()->json($new_comment);
+    }
+
+    public function upload(Request $request)
+    {
+        $file = $request->file('file');
+        $input = $request->all();
+
+        $original_name = $file->getClientOriginalName();
+        $filename = time() . '.' . $file->getClientOriginalName();
+
+        $file->move('uploads/workspace_files', $filename);
+
+        UploadedFile::create([
+            'file_name' => $filename,
+            'original_name' => $original_name,
+            'description' => $input['description'],
+            'user_id' => Auth::user()->id
+        ]);
+
+        return redirect('/workspace2');
     }
 
 

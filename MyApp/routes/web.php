@@ -62,7 +62,7 @@ Route::group(['middleware' => 'prof', 'auth'], function () {
     Route::post('/prof_students/workspace/comment','ProfstudentsController@create_comment');
     Route::get('/prof_students/new_student/{file}','ProfstudentsController@download');
 
-    
+
     Route::get('/prof_topics','Prof_topicsController@index');
     Route::get('/prof_topics/create','Prof_topicsController@create');
     Route::get('/prof_topics/create/ajax-specialisations','Prof_topicsController@ajax');
@@ -112,6 +112,8 @@ Route::group(['middleware' => 'student', 'auth'], function () {
 
     Route::get('/workspace2','Student_workspaceController@index');
     Route::post('/workspace2','Student_workspaceController@create_comment');
+    Route::post('workspace2/upload','Student_workspaceController@upload');
+
 
 });
 

@@ -41,10 +41,9 @@
                                 </div>
                             </div>
                         </form>
-                        {{--<div id="message" style="color:cornflowerblue;"></div>--}}
+
                         <hr>
                         <br>
-
                         @if( !$files->isEmpty() )
                                 <table class="table" id="files" style="width: 100%;">
                                     <tr>

@@ -20,16 +20,57 @@
 
                     <div class="panel-body">
                         Add files and make necessary comments. Remember to delete documents that are no longer valid.
+                        <br>
+                        <hr>
 
-                        <br><br><br>
-                        <div id="comments-container"></div>
+                        <form action="{{ url('/workspace2/upload') }}" class="form-horizontal"  method="post" id="uploadForm" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label class="btn btn-default btn-sm">
+                                        Chose files<input type="file" name="file" style="display:none;">
+                                    </label>
+                                </div>
+                            </div>
 
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label for="description" class="control-label">Description</label>
+                                    <input id="description" type="text" class="form-control input-sm" name="description" autofocus required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <input type="submit" class="pull-left btn btn-sm btn-primary" value="send">
+                                </div>
+                            </div>
+                        </form>
 
-
-
-
-
-                        <br><br><br>
+                        <hr>
+                        <br>
+                        @if( !$files->isEmpty() )
+                            <table class="table" id="files" style="width: 100%;">
+                                <tr>
+                                    <td><strong>File</strong></td>
+                                    <td><strong>Owner</strong></td>
+                                    <td><strong>Upload date</strong></td>
+                                    <td><strong>Delete</strong></td>
+                                </tr>
+                                @foreach($files as $file)
+                                    <tr  id="{{$file->id}}">
+                                        <td>
+                                            <a href="{{ action('ProfstudentsController@download', [ $file->file_name]) }}">{{$file->original_name}}</a>
+                                            <br> {{$file->description}}
+                                        </td>
+                                        <td>{{$file->name}} {{$file->surname}}</td>
+                                        <td>{{$file->created_at}}</td>
+                                        <td>
+                                            <a href="#" data-id="{{$file->id}}" class="delete"><button type="button" id="delete" class="btn btn-danger btn-sm">Delete</button></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        @endif
 
                         <hr>
                         <div class="panel panel-info">
@@ -78,7 +119,7 @@
         </div>
     </div>
 
-
+{{--adding comment--}}
     <script>
         $(document).ready(function() {
             $('#addCommentForm').on('submit', function (e) {
