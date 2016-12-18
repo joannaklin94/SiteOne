@@ -1,37 +1,14 @@
 @extends('layouts.student')
 
 @section('header')
-    {{--<link rel="stylesheet" type="text/css" href="css/jquery-comments.css">--}}
-    {{--<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">--}}
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    {{--<script type="text/javascript" src="js/jquery-comments.js"></script>--}}
-
-    {{--<script type="text/javascript" src="data/comments-data.js"></script>--}}
-
-{{--    <script type="text/javascript" src="{{ asset('comments/css/jquery-comments.css') }}"></script>--}}
-    <script type="text/javascript" src="{{ asset('comments/js/jquery-comments.js') }}"></script>
-    {{--<script type="text/javascript" src="{{ asset('comments/data/comments-data.js') }}"></script>--}}
-
-
-
-
-
-    {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>--}}
-
-    {{--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>--}}
-    {{--<script type="text/javascript" src="js/jquery-comments.js"></script>--}}
-    {{--<script type="text/javascript" src="data/comments-data.js"></script>--}}
-
-    {{--<script type="text/javascript" src="{{ URL::to('comments\jquery-comment.js') }}"></script>--}}
-    {{--<script type="text/javascript" src="{{ URL::to('comments\data\comments-data.js') }}"></script>--}}
-
+    {{--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>--}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <meta id="token" name="token" content="{{ csrf_token() }}">
 
 @endsection
 
 
-
 @section('content')
-
 
     <div class="container">
         <div class="row">
@@ -69,7 +46,7 @@
                                         {{$comment->message}}
                                     </div>
                                     @endforeach
-                                    {{--<div class="col-sm-4">.col-sm-4</div>--}}
+                                    <div id="newComment"></div>
                                 </div>
                                 @endif
 
@@ -78,10 +55,10 @@
                                 <br>
 
                                 <div class="row">
-                                    <form class="form-horizontal" role="addCommentForm" method="POST">{{ csrf_field() }}
+                                    <form class="form-horizontal" id="addCommentForm" method="POST">
 
                                         <div class="col-sm-1"><img src="/uploads/{{Auth::user()->avatar}}" class="img-rounded" style="width:35px; height:35px; margin:0px 3px;" ></div>
-                                        <div class="col-sm-9"><input id="message" type="text" class="form-control" name="message" value="write comment" required>
+                                        <div class="col-sm-9"><input id="message" type="text" class="form-control" name="message" required>
                                         </div>
                                         <div class="col-sm-2"> <input type="submit" id="submit" value="Comment" class="btn btn-primary btn-sm"></div>
                                     </form>
@@ -94,13 +71,44 @@
                             <a class="button" href="{{ url('/prof_students') }}"><button type="button" class="btn btn-default">Back to students</button></a>
                         </div>
 
-
-
-
+                        <div id="ajaxResponse"></div>
                         </div>
                 </div>
             </div>
         </div>
     </div>
 
+
+    <script>
+        $(document).ready(function() {
+            $('#addCommentForm').on('submit', function (e) {
+                e.preventDefault();
+                var message = $('#message').val();
+                console.log(message);
+                $.ajax({
+                    type: "POST",
+                    url: '/workspace2',
+                    data: {message: message},
+                    beforeSend: function(xhr){
+                        xhr.setRequestHeader('X-CSRF-TOKEN', $("#token").attr('content')
+                        );},
+                    success: function( data ) {
+                        console.log(data);
+                        $("#addCommentForm").trigger('reset');
+                        $("#newComment").append(
+                                '<div class="col-sm-1">' +
+                                '<img src="/uploads/' + data.avatar + '" class="img-rounded" style="width:35px; height:35px; margin:0px 3px;">' +
+                                '</div> <div class="col-sm-11"><strong>' +
+                                data.name + ' ' + data.surname + '</strong>' + ' ' + data.created_at + '<br>' +
+                                data.message + '</div>'
+                        );
+                    }
+                });
+            });
+        });
+    </script>
+
 @endsection
+
+
+

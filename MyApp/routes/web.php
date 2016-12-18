@@ -51,9 +51,7 @@ Route::group(['middleware' => 'prof', 'auth'], function () {
         return view('/prof.home'); });
 
 
-
     Route::get('/prof_students','ProfstudentsController@index');
-    Route::get('/prof_students/student/view_uploads','ProfstudentsController@view_uploads');
     Route::get('/prof_students/workspace/{id}','ProfstudentsController@show_workspace');
     Route::get('/prof_students/student/{id}','ProfstudentsController@show_student');
     Route::get('/prof_students/chose_student','ProfstudentsController@chose_student');
@@ -61,16 +59,10 @@ Route::group(['middleware' => 'prof', 'auth'], function () {
     Route::post('/prof_students/new_student','ProfstudentsController@store');
     Route::get('/prof_students/student/workspace/delete','ProfstudentsController@delete_ajax');
     Route::post('/prof_students/workspace','ProfstudentsController@upload');
-
-
-    Route::get('/prof_students/new_student','ProfstudentsController@file_ajax');
+    Route::post('/prof_students/workspace/comment','ProfstudentsController@create_comment');
     Route::get('/prof_students/new_student/{file}','ProfstudentsController@download');
-//    Route::get('/prof_students/new_student','ProfstudentsController@download');
 
-
-
-
-
+    
     Route::get('/prof_topics','Prof_topicsController@index');
     Route::get('/prof_topics/create','Prof_topicsController@create');
     Route::get('/prof_topics/create/ajax-specialisations','Prof_topicsController@ajax');
@@ -106,6 +98,7 @@ Route::group(['middleware' => 'prof', 'auth'], function () {
 Route::group(['middleware' => 'student', 'auth'], function () {
 
     Route::get('/home2','Home2Controller@index');
+
     Route::get('/profile2','Profile2Controller@index');
     Route::get('/profile2e','Profile2Controller@edit');
     Route::get('/profile2e/ajax-specialisation','Profile2Controller@ajax');
@@ -116,6 +109,9 @@ Route::group(['middleware' => 'student', 'auth'], function () {
     Route::post('/profile2/topic1','Student_topicController@store');
     Route::get('/student_topic/{id}','Student_topicController@show_topic');
     Route::get('/student_professor/{id}','Student_topicController@show_prof');
+
+    Route::get('/workspace2','Student_workspaceController@index');
+    Route::post('/workspace2','Student_workspaceController@create_comment');
 
 });
 

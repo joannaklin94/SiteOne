@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use Illuminate\Http\Request;
 use App\Student;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+use Validator;
+//use Input;
 
 class Student_workspaceController extends Controller
 {
@@ -29,12 +33,38 @@ class Student_workspaceController extends Controller
                 ->OrWhere('user_id', $prof->id_prof)
                 ->Where('id_student', $user->id)
                 ->select('users.name', 'users.surname', 'users.avatar', 'comments.message', 'comments.created_at')
-                ->orderBy('created_at', 'desc')
                 ->get();
         }
 
         return view('/student.workspace', compact('comments'));
     }
 
+    public function create_comment ()
+    {
+        $user = Auth::user();
+        $input = Input::get('message');
+//        $this->validator($input)->validate();
+
+        Comment::create([
+            'comment_id' => null,
+            'message' => $input,
+            'user_id' => $user->id,
+        ]);
+        $new_comment = DB::table('comments')
+            ->join('users', 'users.id', 'comments.user_id')
+            ->select('users.name', 'users.surname', 'users.avatar', 'comments.message', 'comments.created_at')
+            ->latest()
+            ->first();
+
+        return response()->json($new_comment);
+    }
+
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'message' =>  'required',
+        ]);
+    }
 
 }

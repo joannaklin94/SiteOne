@@ -49,9 +49,10 @@ class Home2Controller extends Controller
                 ->orwhere('id_student', null)
                 ->where('finish_date', '>=', $date)
                 ->get();
-            $found = 1;
+            if(!$ads->isEmpty()){
+                $found = 1;
+            }
         }
-
 
         return view('student.home', compact('ads', 'user', 'found'));
     }

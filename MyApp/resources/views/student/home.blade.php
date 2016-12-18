@@ -23,6 +23,8 @@
                                 <h5 style="color:cornflowerblue;">{{$ad->title}} ({{$user->name}} {{$user->surname}})</h5>
                                 {{$ad->description}} <br><br>
                             @endforeach
+                        @else
+                            <br> You don't have any news now.
                         @endif
 
                     </div>

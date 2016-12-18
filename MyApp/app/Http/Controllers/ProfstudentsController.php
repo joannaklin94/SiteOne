@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Student;
 use App\Professor;
 use App\Studentstopic;
@@ -150,10 +151,10 @@ class ProfstudentsController extends Controller
 
         $comments = DB::table('comments')
             ->join('users', 'comments.user_id', 'users.id')
-//            ->select('users.name', 'users.surname','users.avatar','comments.message', 'comments.created_at')
             ->where('comments.user_id', '=',$prof->id)
             ->where('comments.id_student', '=',$id)
             ->orWhere('comments.user_id', '=',$id)
+            ->orderBy('comments.created_at', 'asc')
             ->get();
 
         $files = DB::table('files')
@@ -162,10 +163,32 @@ class ProfstudentsController extends Controller
             ->where('student_id', '=',$id)
             ->orWhere('user_id', $id)
             ->select('users.name', 'users.surname', 'files.*')
-            ->latest()
+            ->orderBy('files.created_at', 'asc')
             ->get();
 
         return view('prof.student_workspace',compact('comments','id', 'files'));
+    }
+
+    public function create_comment ()
+    {
+        $user = Auth::user();
+        $student = Input::get('student');
+        $msg = Input::get('message');
+
+        Comment::create([
+            'comment_id' => null,
+            'message' => $msg,
+            'user_id' => $user->id,
+            'id_student' => $student,
+        ]);
+
+        $new_comment = DB::table('comments')
+            ->join('users', 'users.id', 'comments.user_id')
+            ->select('users.name', 'users.surname', 'users.avatar', 'comments.message', 'comments.created_at')
+            ->latest()
+            ->first();
+
+        return response()->json($new_comment);
     }
 
     public function download($file_name)
@@ -191,68 +214,25 @@ class ProfstudentsController extends Controller
 
     public function upload(Request $request)
     {
-//        print_r($request->all());
         $file = $request->file('file');
+        $input = $request->all();
 
-        if(!empty($file))
-        {
-            $original_name = $file->getClientOriginalName();
-            $filename = time() . '.' . $file->getClientOriginalName();
-            $file ->move('uploads/workspace_files',$filename);
+        $original_name = $file->getClientOriginalName();
+        $filename = time() . '.' . $file->getClientOriginalName();
+
+        $file->move('uploads/workspace_files', $filename);
 //            $file ->move('../storage/workspace_files',$filename);
 
+        UploadedFile::create([
+            'file_name' => $filename,
+            'original_name' => $original_name,
+            'description' => $input['description'],
+            'student_id' => $input['student_id'],
+            'user_id' => Auth::user()->id
+        ]);
 
-            UploadedFile::create([
-                'file_name' => $filename,
-                'original_name' => $original_name,
-                'description' => $request['description'],
-                'student_id' => $request['student_id'],
-                'user_id' => Auth::user()->id
-            ]);
-
-//            $file =  UploadedFile::where('file_name', $filename)
-//                ->first();
-
-//            $faculty_id = Input::get('faculty_id');
-//
-//            $faculties = DB::table('institutes')
-//                ->select('name_pol', 'institute_id')
-//                ->where('faculty_id', $faculty_id)
-//                ->get();
-//
-//            return response()->json($faculties);
-
-        }
-
-//        return response()->json($file);
-
-    }
-
-    public function view_uploads()
-    {
-        $id = Input::get('id');
-
-        $files =  UploadedFile:://where('file_name', $filename)
-                latest()->first();
-
-//        $files = DB::table('files')
-//            ->select('files.id', 'files.original_name')
-//            ->join('users', 'users.id', 'files.user_id')
-//            ->where('user_id', Auth::user()->id)
-//            ->where('student_id', $id)
-//            ->orWhere('user_id', $id)
-//            ->get();
-
-        return response()->json($files);
-    }
-
-    public function file_ajax()
-    {
-        $file =  UploadedFile::latest()
-            ->first();
-
-        return response()->json($file);
-
+        $route = '/prof_students/workspace/' . $input['student_id'];
+        return redirect($route);
     }
 
 }
