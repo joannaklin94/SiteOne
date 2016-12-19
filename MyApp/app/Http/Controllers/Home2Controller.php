@@ -39,18 +39,20 @@ class Home2Controller extends Controller
         $ads = array();
         $date = date('Y-m-d');
 
-        if($has_topic->thesis_id)
-        {
-            $prof = Thesis::where('id', $has_topic->thesis_id)->first();
-            $user = User::find($prof->id_prof);
-            $ads = Ad::where('id_prof',$prof->id_prof)
-                ->where('id_student', $user->id)
-                ->where('finish_date', '>=', $date)
-                ->orwhere('id_student', null)
-                ->where('finish_date', '>=', $date)
-                ->get();
-            if(!$ads->isEmpty()){
-                $found = 1;
+        if(isset($has_topic)){
+            if($has_topic->thesis_id)
+            {
+                $prof = Thesis::where('id', $has_topic->thesis_id)->first();
+                $user = User::find($prof->id_prof);
+                $ads = Ad::where('id_prof',$prof->id_prof)
+                    ->where('id_student', $user->id)
+                    ->where('finish_date', '>=', $date)
+                    ->orwhere('id_student', null)
+                    ->where('finish_date', '>=', $date)
+                    ->get();
+                if(!$ads->isEmpty()){
+                    $found = 1;
+                }
             }
         }
 

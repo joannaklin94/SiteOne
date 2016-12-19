@@ -28,28 +28,36 @@ class Student_workspaceController extends Controller
             ->select('theses.id_prof')
             ->first();
 
-        if( isset($prof->id_prof) )
+        if($prof)
         {
-            $comments = DB::table('comments')
-                ->join('users', 'users.id', 'comments.user_id')
-                ->where('user_id', $user->id)
-                ->OrWhere('user_id', $prof->id_prof)
-                ->Where('id_student', $user->id)
-                ->select('users.name', 'users.surname', 'users.avatar', 'comments.message', 'comments.created_at')
-                ->orderBy('comments.created_at', 'asc')
-                ->get();
+            if( isset($prof->id_prof) )
+            {
+                $comments = DB::table('comments')
+                    ->join('users', 'users.id', 'comments.user_id')
+                    ->where('user_id', $user->id)
+                    ->OrWhere('user_id', $prof->id_prof)
+                    ->Where('id_student', $user->id)
+                    ->select('users.name', 'users.surname', 'users.avatar', 'comments.message', 'comments.created_at')
+                    ->orderBy('comments.created_at', 'asc')
+                    ->get();
 
-            $files = DB::table('files')
-                ->join('users', 'users.id', 'files.user_id')
-                ->where('user_id', Auth::user()->id)
-                ->orWhere('user_id', $prof->id_prof)
-                ->where('student_id', Auth::user()->id)
-                ->select('users.name', 'users.surname', 'files.*')
-                ->orderBy('files.created_at', 'asc')
-                ->get();
+                $files = DB::table('files')
+                    ->join('users', 'users.id', 'files.user_id')
+                    ->where('user_id', Auth::user()->id)
+                    ->orWhere('user_id', $prof->id_prof)
+                    ->where('student_id', Auth::user()->id)
+                    ->select('users.name', 'users.surname', 'files.*')
+                    ->orderBy('files.created_at', 'asc')
+                    ->get();
+            }
         }
 
-        return view('/student.workspace', compact('comments', 'files'));
+        else{
+            return view('student.empty_workspace');
+        }
+
+
+        return view('student.workspace', compact('comments', 'files'));
     }
 
     public function create_comment ()
@@ -90,6 +98,14 @@ class Student_workspaceController extends Controller
         ]);
 
         return redirect('/workspace2');
+    }
+
+    public function download($file_name)
+    {
+        $path = '../public/uploads/workspace_files/' . $file_name;
+        $file_path = storage_path($path);
+
+        return response()->download($file_path);
     }
 
 

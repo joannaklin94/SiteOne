@@ -59,7 +59,7 @@
                                 @foreach($files as $file)
                                     <tr  id="{{$file->id}}">
                                         <td>
-                                            <a href="{{ action('ProfstudentsController@download', [ $file->file_name]) }}">{{$file->original_name}}</a>
+                                            <a href="{{ action('Student_workspaceController@download', [ $file->file_name]) }}">{{$file->original_name}}</a>
                                             <br> {{$file->description}}
                                         </td>
                                         <td>{{$file->name}} {{$file->surname}}</td>
@@ -92,12 +92,9 @@
                                 @endif
 
 
-
                                 <br>
-
                                 <div class="row">
                                     <form class="form-horizontal" id="addCommentForm" method="POST">
-
                                         <div class="col-sm-1"><img src="/uploads/{{Auth::user()->avatar}}" class="img-rounded" style="width:35px; height:35px; margin:0px 3px;" ></div>
                                         <div class="col-sm-9"><input id="message" type="text" class="form-control" name="message" required>
                                         </div>
@@ -107,13 +104,7 @@
                             </div>
                         </div>
 
-
-                        <div class="col-md-6">
-                            <a class="button" href="{{ url('/prof_students') }}"><button type="button" class="btn btn-default">Back to students</button></a>
-                        </div>
-
-                        <div id="ajaxResponse"></div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>

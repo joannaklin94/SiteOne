@@ -40,15 +40,34 @@ Route::group(['middleware' => 'admin', 'auth'], function () {
     Route::get('/admin2', function () {
         echo 'u have access another'; });
 
-    Route::get('/home0', function () {
-        return view('/admin.home'); });
+//    Route::get('/home0', function () {
+//        return view('/admin.home'); });
+
+    Route::get('/home0','AdminController@index');
+    Route::get('/web_users','AdminController@users');
+    Route::get('/web_users/delete','AdminController@delete');
+    Route::get('/settings','AdminController@settings');
+    Route::get('/settings/faculties','AdminController@ajax_faculties');
+    Route::get('/settings/specialisations','AdminController@ajax_specialisations');
+    Route::get('/settings/institutions','AdminController@ajax_institutions');
+
+
+
+
+
+
+
+
+
+
 
 });
 
 Route::group(['middleware' => 'prof', 'auth'], function () {
 
-    Route::get('/home1', function () {
-        return view('/prof.home'); });
+//    Route::get('/home1', function () {
+//        return view('/prof.home'); });
+    Route::get('/home1','Home1Controller@index');
 
 
     Route::get('/prof_students','ProfstudentsController@index');
@@ -90,10 +109,6 @@ Route::group(['middleware' => 'prof', 'auth'], function () {
 });
 
 
-
-/*After logging - user: prof*/
-
-
 /*After logging - user: student*/
 Route::group(['middleware' => 'student', 'auth'], function () {
 
@@ -113,6 +128,8 @@ Route::group(['middleware' => 'student', 'auth'], function () {
     Route::get('/workspace2','Student_workspaceController@index');
     Route::post('/workspace2','Student_workspaceController@create_comment');
     Route::post('workspace2/upload','Student_workspaceController@upload');
+    Route::get('/workspace2/download/{file}','Student_workspaceController@download');
+
 
 
 });
@@ -121,17 +138,6 @@ Route::group(['middleware' => 'student', 'auth'], function () {
 
 
 
-
-//Route::get('/admin', function () {
-//    echo 'u have access'; })->middleware('admin');
-
-//Route::get('/home2', function () {   //tylko do prob bo takto mozna wejsc z zewnatrz
-//    return view('/home2'); });
-
-Route::get('/my_register', 'RegisterController@index');  //popraw w innych miejscach to delete
-Route::get('studentsExercise', 'StudentsController@index');  //{id}/my_students
-Route::get('studentsExercise/create', 'StudentsController@create');   //kolejnosc!!  to nie tu
-Route::get('studentsExercise/{id}', 'StudentsController@show');
 
 
 
